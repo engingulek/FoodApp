@@ -2,4 +2,19 @@
     <string name="app_name">FoodApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error">Uyarı</string>
+    <string name="alert_message">Hatalı giriş. Eposta ve şifrenizi kontrol edininiz</string>
+    <string name="alert_message_null">Boş kalan yerleri doldurunuz</string>
+    <string name="close">Kapat</string>
+    <string name="alert_message_same_accomt">Böyle bir eposya adresi bulunmaktdır.</string>
+    <string name="alert_message_password_char">Şifreniz 6 karakterden fazla olmalıdır.</string>
+    <string name="alert_message_email_badly_format">Destektenmeyen e-posta adresi kontrol ediniz</string>
+
+
+
+
+
+
+
+
 </resources>

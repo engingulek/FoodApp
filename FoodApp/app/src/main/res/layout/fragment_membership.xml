@@ -15,8 +15,9 @@
             android:layout_width="412dp"
             android:layout_height="331dp"
             android:layout_marginTop="1dp"
-            android:background="#1952E6"
             android:translationZ="0dp"
+            android:background="@drawable/background_card_corneradius"
+            android:shadowRadius="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#5685FF"
+
+                android:background="@drawable/background_card_corneradius"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
