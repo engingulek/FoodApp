@@ -3,12 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_nav"
-    app:startDestination="@id/membershipFragment2">
+    app:startDestination="@id/membershipFragment">
     <fragment
-        android:id="@+id/membershipFragment2"
+        android:id="@+id/membershipFragment"
         android:name="com.example.foodapp.MembershipFragment"
         android:label="MembershipFragment"
         tools:layout="@layout/fragment_membership"
 
-        />
+        >
+        <action
+            android:id="@+id/toHomePage"
+            app:destination="@id/homePageFragment"
+            app:popUpTo="@id/membershipFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.foodapp.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <argument
+            android:name="food"
+            app:argType="com.example.foodapp.entity.Food" />
+    </fragment>
 </navigation>

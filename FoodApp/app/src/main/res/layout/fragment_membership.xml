@@ -2,6 +2,11 @@
 <layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="fragmentMemebershipObject" type="com.example.foodapp.MembershipFragment" />
+
+
+    </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,10 +59,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="168dp"
                     android:backgroundTint="#5685FF"
-                    android:text="Kayıt Ol"
+                    android:text="Kayıt Olma"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.735"
                     app:layout_constraintStart_toStartOf="parent"
+
+
+
+
+
 
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,10 +76,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="168dp"
-                    android:text="Giriş"
+                    android:text="Giriş Yapma"
                     android:backgroundTint="#5685FF"
                     app:layout_constraintEnd_toStartOf="@+id/bttnSingUpView"
                     app:layout_constraintHorizontal_bias="0.735"
+
+
+
 
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -89,6 +102,8 @@
             android:layout_marginEnd="26dp"
             android:shadowColor="@color/black"
             android:shadowRadius="20"
+
+
             android:translationZ="1dp"
             app:cardCornerRadius="20sp"
             app:cardElevation="20dp"
@@ -166,12 +181,6 @@
 
 
 
-
-
-
-
-
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewSingIn"
             android:layout_width="wrap_content"
@@ -245,7 +254,8 @@
             android:layout_height="67dp"
             android:layout_marginBottom="70dp"
             android:backgroundTint="#5685FF"
-            android:text="Giriş Yap"
+            android:onClick="@{()->fragmentMemebershipObject.bttnSingInUpAction()}"
+            android:text='Giriş Yap'
             android:textColor="@color/white"
             app:cornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
