@@ -9,14 +9,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.foodapp.adapter.FoodAdapter
+import com.example.foodapp.adapter.MorePreferedFoodAdapter
 import com.example.foodapp.databinding.FragmentHomePageBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
 
 
 class HomePageFragment : Fragment() {
     private lateinit var design : FragmentHomePageBinding
-    private lateinit var adapter: FoodAdapter
+    private lateinit var allFoodAdapter: FoodAdapter
     private lateinit var viewModel: HomePageViewModel
+    private  lateinit var morePreferedFoodAdapter: MorePreferedFoodAdapter
 
 
 
@@ -25,9 +27,18 @@ class HomePageFragment : Fragment() {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_home_page, container, false)
 
 
+        // All Food Adappter
         viewModel.foodList.observe(viewLifecycleOwner,{
-            adapter = FoodAdapter(requireContext(),it,viewModel)
-            design.foodAdapter = adapter
+            allFoodAdapter = FoodAdapter(requireContext(),it,viewModel)
+            design.foodAdapter = allFoodAdapter
+        })
+
+
+
+        // All More Prefered Adapter
+        viewModel.morePreferedFoodList.observe(viewLifecycleOwner,{
+            morePreferedFoodAdapter = MorePreferedFoodAdapter(requireContext(),it,viewModel)
+            design.morePreferedFoodAdapter = morePreferedFoodAdapter
         })
 
 

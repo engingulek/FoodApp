@@ -10,9 +10,11 @@ import com.example.foodapp.databinding.FoodCardDesignBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
 import com.squareup.picasso.Picasso
 
-class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: HomePageViewModel) : RecyclerView.Adapter<FoodAdapter.CardDesignConservative>() {
+class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: HomePageViewModel)
+    : RecyclerView.Adapter<FoodAdapter.CardDesignConservative>() {
 
-    inner class CardDesignConservative(foodCardDesignBinding : FoodCardDesignBinding)  : RecyclerView.ViewHolder(foodCardDesignBinding.root) {
+    inner class CardDesignConservative(foodCardDesignBinding : FoodCardDesignBinding)
+        : RecyclerView.ViewHolder(foodCardDesignBinding.root) {
         var foodCardDesignBinding : FoodCardDesignBinding
          init {
              this.foodCardDesignBinding = foodCardDesignBinding
