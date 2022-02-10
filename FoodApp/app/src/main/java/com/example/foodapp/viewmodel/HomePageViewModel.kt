@@ -1,5 +1,6 @@
 package com.example.foodapp.viewmodel
 
+import android.widget.ImageView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.foodapp.entity.Food
@@ -18,6 +19,10 @@ class HomePageViewModel :ViewModel() {
     fun loadFoods() {
         foodRepo.getAllFood()
     }
+
+
+
+
 
 
 

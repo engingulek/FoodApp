@@ -3,10 +3,12 @@ package com.example.foodapp.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.entity.Food
 import com.example.foodapp.databinding.FoodCardDesignBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
+import com.squareup.picasso.Picasso
 
 class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: HomePageViewModel) : RecyclerView.Adapter<FoodAdapter.CardDesignConservative>() {
 
@@ -24,14 +26,25 @@ class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: 
     }
 
     override fun onBindViewHolder(holder: CardDesignConservative, position: Int) {
-        // tıklanma işlemi
         val food = foodList.get(position)
         val cardDesign = holder.foodCardDesignBinding
         cardDesign.foodObject = food
+        getFoodImage(food.food_image_name,cardDesign.foodImageView)
 
     }
 
     override fun getItemCount(): Int {
         return foodList.size
+    }
+
+
+    fun getFoodImage(imageName:String,imageView:ImageView) {
+
+
+        val url = "http://kasimadalan.pe.hu/yemekler/resimler/$imageName"
+         Picasso.get().load(url).into(imageView)
+
+
+
     }
 }

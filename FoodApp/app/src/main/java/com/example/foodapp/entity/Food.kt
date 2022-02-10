@@ -7,5 +7,5 @@ import java.io.Serializable
 data class Food(@SerializedName("yemek_id") @Expose var food_id:Int,
                 @SerializedName("yemek_adi") @Expose  var food_name:String,
                 @SerializedName("yemek_resim_adi") @Expose  var food_image_name:String,
-                @SerializedName("yemek_giyat") @Expose  var food_price:Int) : Serializable{
+                @SerializedName("yemek_fiyat") @Expose  var food_price:Int) : Serializable{
 }
