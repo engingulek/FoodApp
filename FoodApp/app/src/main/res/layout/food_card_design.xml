@@ -14,18 +14,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="230dp"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:translationZ="10dp">
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/most_food_card"
-            android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_width="129dp"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="#CAC8C8"
             android:translationZ="0dp"
+            app:cardBackgroundColor="#CAC8C8"
             app:cardCornerRadius="120dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +34,7 @@
                 <ImageView
                     android:id="@+id/foodImageView"
                     android:layout_width="69dp"
-                    android:layout_height="70dp"
+                    android:layout_height="61dp"
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -48,13 +47,13 @@
                     android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="8dp"
 
                     android:layout_marginEnd="20dp"
                     android:text="@{foodObject.food_name}"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +63,7 @@
                     android:id="@+id/tvFoodPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="2dp"
                     android:text='@{foodObject.food_price+".00₺"}'
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -73,16 +72,66 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvFoodName" />
 
+
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bttnPricePlus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
                     android:text="+"
-                    android:translationZ="1dp"
+                    app:cornerRadius="120dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFoodName" />
+
+                <TextView
+                    android:id="@+id/textViewPrice"
+                    android:layout_width="29dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="30dp"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/bttnDecrase"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/bttnPricePlus"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFoodName" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bttnDecrase"
+                    android:layout_width="40dp"
+
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="-"
                     app:cornerRadius="120dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvFoodPrice" />
+                    app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFoodName" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bttnAddCart"
+                    android:layout_width="52dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginEnd="39dp"
+                    android:layout_marginBottom="10dp"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    app:cornerRadius="10sp"
+                    app:icon="@drawable/add_shopping_cart"
+
+                    app:iconSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

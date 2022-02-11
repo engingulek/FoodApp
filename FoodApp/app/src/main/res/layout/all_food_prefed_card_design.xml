@@ -21,8 +21,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/most_food_card"
-            android:layout_width="316dp"
-            android:layout_height="97dp"
+            android:layout_width="324dp"
+            android:layout_height="101dp"
             android:layout_margin="10dp"
             android:translationZ="0dp"
             app:cardBackgroundColor="#CAC8C8"
@@ -55,36 +55,78 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/preferedFoodPrice"
-                    app:layout_constraintEnd_toStartOf="@+id/button"
+                    app:layout_constraintEnd_toStartOf="@+id/bttnPricePlus"
                     app:layout_constraintHorizontal_bias="0.27"
                     app:layout_constraintStart_toEndOf="@+id/preferedFoodImageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/preferedFoodPrice"
-                    android:layout_width="81dp"
-                    android:layout_height="23dp"
+                    android:layout_width="80dp"
+                    android:layout_height="28dp"
                     android:text='@{foodObject.food_price+".00₺"}'
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button"
+                    app:layout_constraintEnd_toStartOf="@+id/bttnPricePlus"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/preferedFoodImageView"
                     app:layout_constraintTop_toBottomOf="@+id/preferedFoodName" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button"
+                    android:id="@+id/bttnPricePlus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
 
-                    android:layout_marginTop="28dp"
-
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="20dp"
                     android:text="+"
                     app:cornerRadius="120dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/preferedFoodPrice"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewPrice"
+                    android:layout_width="29dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="27dp"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/bttnDecrase"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/bttnPricePlus"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bttnDecrase"
+                    android:layout_width="40dp"
+
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:text="-"
+                    app:cornerRadius="120dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bttnAddCart"
+                    android:layout_width="52dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="7dp"
+                    android:textAlignment="center"
+                    app:iconSize="20dp"
+                    app:cornerRadius="10sp"
+                    android:textSize="12sp"
+                    app:icon="@drawable/add_shopping_cart"
+                    app:layout_constraintEnd_toStartOf="@+id/bttnDecrase"
+                    app:layout_constraintStart_toEndOf="@+id/bttnPricePlus"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

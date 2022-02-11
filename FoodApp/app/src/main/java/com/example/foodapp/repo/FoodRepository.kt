@@ -1,5 +1,6 @@
 package com.example.foodapp.repo
 
+import android.util.Log
 import android.widget.ImageView
 import androidx.lifecycle.MutableLiveData
 import com.example.foodapp.entity.CartFood
@@ -54,6 +55,26 @@ class FoodRepository {
     }
 
 
+    fun searchFood(query:String){
+        foodDao.allFood().enqueue(object :Callback<FoodResult>{
+            override fun onResponse(call: Call<FoodResult>, response: Response<FoodResult>) {
+                val liste = response.body().foods
+
+                val listFiltered : List<Food> = liste.filter { it.food_name.toLowerCase().contains(query.toLowerCase()) }
+
+                foodList.value = listFiltered
+
+
+            }
+
+            override fun onFailure(call: Call<FoodResult>, t: Throwable) {
+
+            }
+
+        })
+
+    }
+
 
 
     fun getAllMorePreferedFood() {
@@ -77,6 +98,38 @@ class FoodRepository {
 
         })
     }
+
+
+    fun sortPrice(sortType:Boolean) {
+
+        foodDao.allFood().enqueue(object :Callback<FoodResult>{
+            override fun onResponse(call: Call<FoodResult>, response: Response<FoodResult>) {
+                val liste = response.body().foods
+
+                if (sortType == true) {
+                    foodList.value = liste.sortedByDescending { it.food_price }
+
+                }
+                else {
+                    foodList.value = liste.sortedBy { it.food_price }
+                }
+
+
+
+            }
+
+            override fun onFailure(call: Call<FoodResult>, t: Throwable) {
+
+            }
+
+        })
+
+
+
+
+    }
+
+
 
 
 

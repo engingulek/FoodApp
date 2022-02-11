@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.databinding.AllFoodPrefedCardDesignBinding
 import com.example.foodapp.entity.CartFood
@@ -35,6 +36,8 @@ class MorePreferedFoodAdapter (var mContext:Context,var morePreferesFoodList:Lis
         val cardDesign = holder.morePrefedCardDesignBinding
         cardDesign.foodObject = food
         getFoodImage(food.food_image_name,cardDesign.preferedFoodImageView)
+
+
 
     }
 

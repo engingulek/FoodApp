@@ -6,6 +6,7 @@
         <variable name="fragmemntHomePage" type="com.example.foodapp.HomePageFragment" />
         <variable name="foodAdapter" type="com.example.foodapp.adapter.FoodAdapter" />
         <variable name="morePreferedFoodAdapter" type="com.example.foodapp.adapter.MorePreferedFoodAdapter" />
+        <variable name="userName" type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +29,7 @@
             app:spanCount="2" />
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarHomePage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -42,15 +43,30 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="7dp">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/userNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text='@{"Merhaba "+userName}'
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView4"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/aladin"
                     android:text="FoodApp"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="34sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -64,17 +80,16 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="240dp"
-            android:layout_marginEnd="320dp"
+            android:layout_marginTop="20dp"
             android:text="All Food"
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/rvvFood"
+            app:layout_constraintEnd_toStartOf="@+id/searchView3"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/bttnSortByMaxToMin" />
 
         <TextView
             android:id="@+id/textView2"
@@ -90,19 +105,60 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.19"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarHomePage" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvvMorePrefered"
+            android:layout_width="418dp"
+            android:layout_height="112dp"
             android:adapter="@{morePreferedFoodAdapter}"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bttnSortByMaxToMin"
+            android:layout_width="142dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:onClick="@{()->fragmemntHomePage.applySort(true)}"
+            android:text="Max to Min"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/bttnSortByMinToMax"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvvMorePrefered" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bttnSortByMinToMax"
+            android:layout_width="142dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:onClick="@{()->fragmemntHomePage.applySort(false)}"
+            android:text="Min to Max"
+
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bttnSortByMaxToMin"
+            app:layout_constraintTop_toBottomOf="@+id/rvvMorePrefered" />
+
+        <SearchView
+            android:id="@+id/searchView3"
+            android:layout_width="263dp"
+            android:layout_height="35dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/rvvFood"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:background="@drawable/search_view_design"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/bttnSortByMaxToMin" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
