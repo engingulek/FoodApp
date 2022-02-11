@@ -18,13 +18,13 @@ class FoodRepository {
 
     var foodList: MutableLiveData<List<Food>>
     var foodDao: FoodDaoInterface
-    var morePreferedFoodList : MutableLiveData<List<CartFood>>
+    var cartFoodList : MutableLiveData<List<CartFood>>
 
 
     init {
         foodDao = ApiUtils.getFoodDaoInterface()
         foodList = MutableLiveData()
-        morePreferedFoodList = MutableLiveData()
+        cartFoodList = MutableLiveData()
 
     }
 
@@ -33,8 +33,8 @@ class FoodRepository {
         return  foodList
     }
 
-    fun bringsMorePreferedFood() : MutableLiveData<List<CartFood>> {
-        return  morePreferedFoodList
+    fun bringsFoodListCart() : MutableLiveData<List<CartFood>> {
+        return  cartFoodList
     }
 
 
@@ -77,16 +77,12 @@ class FoodRepository {
 
 
 
-    fun getAllMorePreferedFood() {
+    fun getAllFoodFromCart() {
         foodDao.allFoodFromCart().enqueue(object : Callback<CartResult>{
             override fun onResponse(call: Call<CartResult>, response: Response<CartResult>) {
                 var liste = response.body().cartFoods
-                var cartFoodList = HashSet<CartFood>()
-                for (food in liste) {
-                    cartFoodList.add(food)
-                }
+                cartFoodList.value = liste
 
-                morePreferedFoodList.value =  cartFoodList.sortedByDescending { it.cart_food_piece }.take(5)
             }
 
 

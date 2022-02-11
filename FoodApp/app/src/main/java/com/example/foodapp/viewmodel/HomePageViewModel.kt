@@ -1,5 +1,6 @@
 package com.example.foodapp.viewmodel
 
+import android.view.ScaleGestureDetector
 import android.widget.ImageView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,13 +12,16 @@ import com.example.foodapp.repo.FoodRepository
 class HomePageViewModel :ViewModel() {
     var foodList = MutableLiveData<List<Food>>()
     val foodRepo = FoodRepository()
-    var morePreferedFoodList = MutableLiveData<List<CartFood>>()
+    var cartFromList = MutableLiveData<List<CartFood>>()
+
+
 
     init {
         loadFoods()
-        loadMorePreferedFoods()
+        loadCartFoodList()
      foodList =  foodRepo.bringFoods()
-        morePreferedFoodList = foodRepo.bringsMorePreferedFood()
+        cartFromList = foodRepo.bringsFoodListCart()
+
 
 
 
@@ -28,8 +32,8 @@ class HomePageViewModel :ViewModel() {
         foodRepo.getAllFood()
     }
 
-    fun loadMorePreferedFoods() {
-        foodRepo.getAllMorePreferedFood()
+    fun loadCartFoodList() {
+        foodRepo.getAllFoodFromCart()
 
     }
 

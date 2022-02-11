@@ -9,6 +9,7 @@
     <string name="alert_message_same_accomt">Böyle bir eposya adresi bulunmaktdır.</string>
     <string name="alert_message_password_char">Şifreniz 6 karakterden fazla olmalıdır.</string>
     <string name="alert_message_email_badly_format">Destektenmeyen e-posta adresi kontrol ediniz</string>
+    <string name="search">Food Search</string>
 
 
 </resources>

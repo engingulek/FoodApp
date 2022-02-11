@@ -1,15 +1,18 @@
 package com.example.foodapp
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
+import android.os.CountDownTimer
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.foodapp.adapter.FoodAdapter
-import com.example.foodapp.adapter.MorePreferedFoodAdapter
 import com.example.foodapp.databinding.FragmentHomePageBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -17,11 +20,12 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class HomePageFragment : Fragment() , SearchView.OnQueryTextListener  {
+
+class HomePageFragment : Fragment() {
     private lateinit var design : FragmentHomePageBinding
     private lateinit var allFoodAdapter: FoodAdapter
     private lateinit var viewModel: HomePageViewModel
-    private  lateinit var morePreferedFoodAdapter: MorePreferedFoodAdapter
+
     private lateinit var auth: FirebaseAuth
 
 
@@ -30,9 +34,36 @@ class HomePageFragment : Fragment() , SearchView.OnQueryTextListener  {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_home_page, container, false)
         design.fragmemntHomePage = this
-        (activity as AppCompatActivity).setSupportActionBar(design.toolbarHomePage)
+
         auth = Firebase.auth
         design.userName = auth.currentUser?.displayName
+        val url = auth.currentUser?.photoUrl
+
+
+        stepTimer()
+
+
+
+
+        design.searchViewFood.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                viewModel.search(query)
+                return false
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.search(newText)
+                return true
+            }
+        })
+
+
+
+
+
+
+
+
+
 
 
 
@@ -42,18 +73,6 @@ class HomePageFragment : Fragment() , SearchView.OnQueryTextListener  {
             allFoodAdapter = FoodAdapter(requireContext(),it,viewModel)
             design.foodAdapter = allFoodAdapter
         })
-
-
-
-        // All More Prefered Adapter
-        viewModel.morePreferedFoodList.observe(viewLifecycleOwner,{
-            morePreferedFoodAdapter = MorePreferedFoodAdapter(requireContext(),it,viewModel)
-            design.morePreferedFoodAdapter = morePreferedFoodAdapter
-        })
-
-
-
-
 
 
 
@@ -68,34 +87,58 @@ class HomePageFragment : Fragment() , SearchView.OnQueryTextListener  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+
         val tempViewModel:HomePageViewModel by viewModels()
         viewModel = tempViewModel
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_search,menu)
-        val item = menu.findItem(R.id.action_search)
-        val searchView = item.actionView as SearchView
-        searchView.setOnQueryTextListener(this)
-
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
  fun applySort(sortType:Boolean) {
      viewModel.applySortFood(sortType)
  }
 
-    override fun onQueryTextSubmit(query: String): Boolean {//Arama iconu tıklanıldığında çalışır.
-viewModel.search(query)
 
-        return true
+
+
+    fun stepTimer() {
+        design.imageViewOneStep.setColorFilter(getResources().getColor(R.color.black));
+        design.textViewOneStep.setTextColor(Color.BLACK)
+
+        val counter = object  : CountDownTimer(15000,1000) {
+            override fun onTick(i: Long) {
+                if(i.toInt()/1000  == 10 ) {
+                    design.imageViewTwoStep.setColorFilter(getResources().getColor(R.color.black));
+                    design.textViewTwoStep.setTextColor(Color.BLACK)
+                    design.textViewLineOne.setBackgroundColor(Color.BLACK)
+
+                }
+
+
+                if (i.toInt()/1000  == 5) {
+                    design.imageViewThirdStep.setColorFilter(getResources().getColor(R.color.black));
+                    design.textViewThirdStep.setTextColor(Color.BLACK)
+                    design.textViewLineSecond.setBackgroundColor(Color.BLACK)
+
+                }
+
+
+
+            }
+
+            override fun onFinish() {
+                // Bitince çalışacak
+                // constrain layout gizle şuan da sipariş yok yaz
+                design.stepContraitLayout.isGone = true
+            }
+
+        }
+
+        counter.start()
     }
 
-    override fun onQueryTextChange(newText: String): Boolean {//Her harf girdikçe ve sildikçe çalışır.
-        viewModel.search(newText)
-        return true
-    }
+
 
 
 }
+
+
