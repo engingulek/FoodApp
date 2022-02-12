@@ -20,7 +20,7 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/most_food_card"
+            android:id="@+id/food_card"
             android:layout_width="324dp"
             android:layout_height="101dp"
             android:layout_margin="10dp"

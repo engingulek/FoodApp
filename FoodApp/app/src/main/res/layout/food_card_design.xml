@@ -19,12 +19,12 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/most_food_card"
+            android:id="@+id/food_card"
             android:layout_width="129dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:translationZ="0dp"
-            app:cardBackgroundColor="#CAC8C8"
+            app:cardBackgroundColor="#D0F1E9"
             app:cardCornerRadius="120dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout

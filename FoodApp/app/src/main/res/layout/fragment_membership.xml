@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="fragmentMemebershipObject" type="com.example.foodapp.MembershipFragment" />
+        <variable name="fragmentMemebershipObject" type="com.example.foodapp.fragment.MembershipFragment" />
 
 
     </data>
@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MembershipFragment">
+        tools:context=".fragment.MembershipFragment">
 
 
         <androidx.cardview.widget.CardView
@@ -20,9 +20,9 @@
             android:layout_width="412dp"
             android:layout_height="331dp"
             android:layout_marginTop="1dp"
-            android:translationZ="0dp"
             android:background="@drawable/background_card_corneradius"
             android:shadowRadius="0"
+            android:translationZ="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,15 +58,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="168dp"
-                    android:backgroundTint="#5685FF"
+                    android:backgroundTint="#458C7B"
                     android:text="Kayıt Olma"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.735"
                     app:layout_constraintStart_toStartOf="parent"
-
-
-
-
 
 
                     app:layout_constraintTop_toTopOf="parent" />
@@ -76,12 +72,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="168dp"
+                    android:backgroundTint="#458C7B"
                     android:text="Giriş Yapma"
-                    android:backgroundTint="#5685FF"
                     app:layout_constraintEnd_toStartOf="@+id/bttnSingUpView"
                     app:layout_constraintHorizontal_bias="0.735"
-
-
 
 
                     app:layout_constraintStart_toStartOf="parent"
@@ -180,7 +174,6 @@
         </androidx.cardview.widget.CardView>
 
 
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewSingIn"
             android:layout_width="wrap_content"
@@ -253,15 +246,16 @@
             android:layout_width="206dp"
             android:layout_height="67dp"
             android:layout_marginBottom="70dp"
-            android:backgroundTint="#5685FF"
+            android:backgroundTint="#458C7B"
             android:onClick="@{()->fragmentMemebershipObject.bttnSingInUpAction()}"
             android:text='Giriş Yap'
             android:textColor="@color/white"
             app:cornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

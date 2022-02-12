@@ -21,11 +21,6 @@ class HomePageViewModel :ViewModel() {
         loadCartFoodList()
      foodList =  foodRepo.bringFoods()
         cartFromList = foodRepo.bringsFoodListCart()
-
-
-
-
-
     }
 
     fun loadFoods() {

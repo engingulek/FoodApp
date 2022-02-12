@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodapp.R
 import com.example.foodapp.entity.Food
 import com.example.foodapp.databinding.FoodCardDesignBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
@@ -32,6 +34,9 @@ class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: 
         val cardDesign = holder.foodCardDesignBinding
         cardDesign.foodObject = food
         getFoodImage(food.food_image_name,cardDesign.foodImageView)
+        cardDesign.foodCard.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toDetail)
+        }
 
     }
 

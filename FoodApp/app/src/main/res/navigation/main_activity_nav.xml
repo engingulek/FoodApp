@@ -6,7 +6,7 @@
     app:startDestination="@id/membershipFragment">
     <fragment
         android:id="@+id/membershipFragment"
-        android:name="com.example.foodapp.MembershipFragment"
+        android:name="com.example.foodapp.fragment.MembershipFragment"
         android:label="MembershipFragment"
         tools:layout="@layout/fragment_membership"
 
@@ -19,11 +19,19 @@
     </fragment>
     <fragment
         android:id="@+id/homePageFragment"
-        android:name="com.example.foodapp.HomePageFragment"
+        android:name="com.example.foodapp.fragment.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" >
         <argument
             android:name="food"
             app:argType="com.example.foodapp.entity.Food" />
+        <action
+            android:id="@+id/toDetail"
+            app:destination="@id/foodDetailPageFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/foodDetailPageFragment"
+        android:name="com.example.foodapp.fragment.FoodDetailPageFragment"
+        tools:layout="@layout/fragment_food_detail_page"
+        android:label="FoodDetailPageFragment" />
 </navigation>

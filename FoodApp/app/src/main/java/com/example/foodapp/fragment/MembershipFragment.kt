@@ -1,19 +1,16 @@
-package com.example.foodapp
+package com.example.foodapp.fragment
 
-import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentMembershipBinding
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
@@ -121,19 +118,16 @@ class MembershipFragment : Fragment() {
                             Log.e("Hata","${task.exception}")
 
 
-
-
-
                         }
                     }
             }
 
-
-
-
         }
 
     }
+
+
+
 
 
     // Daha önceden giriş yapılıp yapılmadığı kontrol edilmektedir.

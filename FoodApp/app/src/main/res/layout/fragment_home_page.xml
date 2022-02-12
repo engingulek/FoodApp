@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="fragmemntHomePage" type="com.example.foodapp.HomePageFragment" />
+        <variable name="fragmemntHomePage" type="com.example.foodapp.fragment.HomePageFragment" />
         <variable name="foodAdapter" type="com.example.foodapp.adapter.FoodAdapter" />
 
         <variable name="userName" type="String" />
@@ -12,13 +12,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomePageFragment">
+        tools:context=".fragment.HomePageFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvvFood"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="25dp"
             android:layout_marginEnd="2dp"
             android:adapter="@{foodAdapter}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -26,51 +25,39 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/bttnSortByMinToMax"
             app:spanCount="2" />
 
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="308dp"
-            android:text="All Food"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bttnSortByMaxToMin" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bttnSortByMaxToMin"
-            android:layout_width="142dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="154dp"
+            android:layout_width="135dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="10dp"
             android:onClick="@{()->fragmemntHomePage.applySort(true)}"
             android:text="Max to Min"
+            android:textAllCaps="false"
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toStartOf="@+id/bttnSortByMinToMax"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchViewFood" />
+            app:layout_constraintTop_toBottomOf="@+id/stepperCardView"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bttnSortByMinToMax"
-            android:layout_width="142dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="154dp"
-
+            android:layout_width="135dp"
+            android:layout_height="39dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
             android:onClick="@{()->fragmemntHomePage.applySort(false)}"
             android:text="Min to Max"
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/bttnSortByMaxToMin"
-            app:layout_constraintTop_toBottomOf="@+id/searchViewFood" />
+            app:layout_constraintTop_toBottomOf="@+id/stepperCardView"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textViewUserName"
@@ -128,31 +115,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <View
-            android:id="@+id/viewStepper"
-            android:layout_width="0dp"
-            android:layout_height="122dp"
-            android:layout_marginTop="9dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchViewFood" />
-
-
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/stepperCardView"
             android:layout_width="0dp"
-            android:layout_height="122dp"
-            android:layout_marginTop="9dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchViewFood">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/stepContraitLayout"
+                android:id="@+id/constOrderNull"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="There is no active order"
+                    android:textColor="#458C7B"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stepContraitLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/imageViewThirdStep"
