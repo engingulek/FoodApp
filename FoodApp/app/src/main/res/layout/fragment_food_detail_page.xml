@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="fragmentDetailPage" type="com.example.foodapp.fragment.FoodDetailPageFragment" />
+        <variable name="foodObject" type="com.example.foodapp.entity.Food" />
+        <variable name="foodInfoObject" type="com.example.foodapp.entity.FoodInfo" />
+
 
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,9 +15,10 @@
     tools:context=".fragment.FoodDetailPageFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewFood"
         android:layout_width="412dp"
         android:layout_height="222dp"
+
         android:translationZ="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,7 +52,7 @@
                 android:layout_width="228dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="56dp"
-                android:text="Izgara Somon"
+                android:text="@{foodObject.food_name}"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -63,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="13.00₺"
+                android:text='@{foodObject.food_price+".00₺"}'
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +81,7 @@
                 android:layout_height="115dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/textview_design"
-                android:text="Yemek Hakkında Açıklama"
+                android:text="@{foodInfoObject.foodDetail}"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
@@ -98,7 +102,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView88" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -116,14 +120,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
-                android:id="@+id/textView88"
+                android:id="@+id/textViewRating"
                 android:layout_width="49dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="181dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="181dp"
-
-                android:text="4.7"
+                android:text="@{foodInfoObject.foodRating}"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"

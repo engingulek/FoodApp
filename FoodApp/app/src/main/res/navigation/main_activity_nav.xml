@@ -26,12 +26,16 @@
             android:name="food"
             app:argType="com.example.foodapp.entity.Food" />
         <action
-            android:id="@+id/toDetail"
+            android:id="@+id/toDetails"
             app:destination="@id/foodDetailPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailPageFragment"
         android:name="com.example.foodapp.fragment.FoodDetailPageFragment"
         tools:layout="@layout/fragment_food_detail_page"
-        android:label="FoodDetailPageFragment" />
+        android:label="FoodDetailPageFragment" >
+        <argument
+            android:name="food"
+            app:argType="com.example.foodapp.entity.Food" />
+    </fragment>
 </navigation>

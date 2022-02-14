@@ -51,6 +51,11 @@ class HomePageFragment : Fragment() {
             allFoodAdapter = FoodAdapter(requireContext(),it,viewModel)
             design.foodAdapter = allFoodAdapter
         })
+
+
+
+
+
         return  design.root
     }
 
