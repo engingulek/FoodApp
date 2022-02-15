@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.example.foodapp.entity.*
 import com.example.foodapp.retrofit.ApiUtils
 import com.example.foodapp.retrofit.FoodDaoInterface
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.QuerySnapshot
@@ -15,6 +17,7 @@ import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Field
 
 class FoodRepository {
 
@@ -24,6 +27,7 @@ class FoodRepository {
 
     var foodInfoList : MutableLiveData<List<FoodInfo>>
     var refFoodInfo:DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
 
 
@@ -100,7 +104,12 @@ class FoodRepository {
         foodDao.allFoodFromCart().enqueue(object : Callback<CartResult>{
             override fun onResponse(call: Call<CartResult>, response: Response<CartResult>) {
                 var liste = response.body().cartFoods
-                cartFoodList.value = liste
+                auth = Firebase.auth
+                val email = auth.currentUser?.email
+                val parts = email?.split("@")
+                val userName = parts!![0]
+                val listFiltered : List<CartFood> = liste.filter { it.userName == "burakdeneme"  }
+                cartFoodList.value = listFiltered
 
             }
 
@@ -172,6 +181,21 @@ class FoodRepository {
 
         })
 
+    }
+
+
+
+    fun addFoodtoCart(food_name:String, food_image_name :String, yemek_price:Int,  cart_food_piece:Int, userName:String) {
+        foodDao.insertFoodToCaert(food_name, food_image_name, yemek_price,  cart_food_piece, userName).enqueue(object  : Callback<CRUDResult>{
+            override fun onResponse(call: Call<CRUDResult>?, response: Response<CRUDResult>?) {
+
+            }
+
+            override fun onFailure(call: Call<CRUDResult>?, t: Throwable?) {
+
+            }
+
+        })
     }
 
 

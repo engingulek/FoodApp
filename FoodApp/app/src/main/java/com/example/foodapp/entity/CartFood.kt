@@ -8,7 +8,9 @@ data class CartFood (@SerializedName("sepet_yemek_id") @Expose var cart_food_id:
                 @SerializedName("yemek_adi") @Expose var food_name:String,
                 @SerializedName("yemek_resim_adi") @Expose var food_image_name:String,
                 @SerializedName("yemek_fiyat") @Expose var food_price:Int,
-                @SerializedName("yemek_siparis_adet") @Expose var cart_food_piece:Int
+                @SerializedName("yemek_siparis_adet") @Expose var cart_food_piece:Int,
+                     @SerializedName("kullanici_adi") @Expose var  userName:String
+
 
                 ) : Serializable {
 

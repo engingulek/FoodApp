@@ -76,13 +76,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textViewFoodDetail"
                 android:layout_width="330dp"
                 android:layout_height="115dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/textview_design"
+                android:paddingTop="20dp"
                 android:text="@{foodInfoObject.foodDetail}"
                 android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,12 +124,12 @@
 
             <TextView
                 android:id="@+id/textViewRating"
-                android:layout_width="49dp"
+                android:layout_width="55dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="181dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="181dp"
-                android:text="@{foodInfoObject.foodRating}"
+                android:text='@{foodInfoObject.foodRating+"/5.0"}'
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -148,7 +151,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetail" />
 
             <TextView
                 android:id="@+id/textViewPrice"
@@ -163,7 +166,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/bttnDecrase"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/bttnPricePlus"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetail" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bttnDecrase"
@@ -177,7 +180,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textViewPrice"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetail" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bttnAddCart"

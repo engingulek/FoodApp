@@ -10,6 +10,7 @@
             name="foodObject"
             type="com.example.foodapp.entity.Food" />
         <import type="android.view.View"/>
+
     </data>
 
     <LinearLayout

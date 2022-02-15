@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.foodapp.R
 import com.example.foodapp.adapter.FoodAdapter
+import com.example.foodapp.adapter.FoodCartAdapter
 import com.example.foodapp.databinding.FragmentHomePageBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +24,7 @@ class HomePageFragment : Fragment() {
     private lateinit var allFoodAdapter: FoodAdapter
     private lateinit var viewModel: HomePageViewModel
     private lateinit var auth: FirebaseAuth
+    private lateinit var cartListAdapter: FoodCartAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,7 +34,7 @@ class HomePageFragment : Fragment() {
         auth = Firebase.auth
         design.userName = auth.currentUser?.displayName
 
-        stepTimer()
+       // stepTimer()
 
         design.searchViewFood.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -50,6 +52,20 @@ class HomePageFragment : Fragment() {
         viewModel.foodList.observe(viewLifecycleOwner,{
             allFoodAdapter = FoodAdapter(requireContext(),it,viewModel)
             design.foodAdapter = allFoodAdapter
+        })
+
+
+        viewModel.cartFromList.observe(viewLifecycleOwner,{
+            cartListAdapter =  FoodCartAdapter(requireContext(),it,viewModel)
+            design.cartListFoodAdapter = cartListAdapter
+            if (it.size > 0) {
+                design.cartListState = true
+            }
+
+            else {
+                design.cartListState = false
+            }
+
         })
 
 

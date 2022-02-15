@@ -1,6 +1,7 @@
 package com.example.foodapp.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,12 +12,15 @@ import com.example.foodapp.entity.Food
 import com.example.foodapp.databinding.FoodCardDesignBinding
 import com.example.foodapp.fragment.HomePageFragmentDirections
 import com.example.foodapp.viewmodel.HomePageViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 
 class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: HomePageViewModel)
     : RecyclerView.Adapter<FoodAdapter.CardDesignConservative>() {
-
+    private lateinit var auth: FirebaseAuth
     inner class CardDesignConservative(foodCardDesignBinding : FoodCardDesignBinding)
         : RecyclerView.ViewHolder(foodCardDesignBinding.root) {
         var foodCardDesignBinding : FoodCardDesignBinding
@@ -37,15 +41,28 @@ class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: 
         cardDesign.foodObject = food
         getFoodImage(food.food_image_name,cardDesign.foodImageView)
         cardDesign.foodCard.setOnClickListener {
-
             val pass = HomePageFragmentDirections.toDetails(food)
-
-
-
             Navigation.findNavController(it).navigate(pass)
+        }
+        auth = Firebase.auth
+        val email = auth.currentUser?.email
+        val parts = email?.split("@")
+        val userName = parts!![0]
+
+        cardDesign.bttnAddCart.setOnClickListener {
+
+            val piece = cardDesign.textViewPrice.text.toString().toInt()
+           // viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,"denemeUserName")
+            //Log.e("Kullanıcı Ismi","${userName}")
         }
 
     }
+
+
+    /*
+    *
+    *
+    * */
 
     override fun getItemCount(): Int {
         return foodList.size
