@@ -8,9 +8,10 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.foodapp.R
 import com.example.foodapp.adapter.FoodAdapter
-import com.example.foodapp.adapter.FoodCartAdapter
+import com.example.foodapp.adapter.FoodHomePageCartAdapter
 import com.example.foodapp.databinding.FragmentHomePageBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +25,7 @@ class HomePageFragment : Fragment() {
     private lateinit var allFoodAdapter: FoodAdapter
     private lateinit var viewModel: HomePageViewModel
     private lateinit var auth: FirebaseAuth
-    private lateinit var cartListAdapter: FoodCartAdapter
+    private lateinit var cartListAdapter: FoodHomePageCartAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,7 +57,7 @@ class HomePageFragment : Fragment() {
 
 
         viewModel.cartFromList.observe(viewLifecycleOwner,{
-            cartListAdapter =  FoodCartAdapter(requireContext(),it,viewModel)
+            cartListAdapter =  FoodHomePageCartAdapter(requireContext(),it,viewModel)
             design.cartListFoodAdapter = cartListAdapter
             if (it.size > 0) {
                 design.cartListState = true
@@ -67,6 +68,8 @@ class HomePageFragment : Fragment() {
             }
 
         })
+
+
 
 
 
@@ -121,6 +124,10 @@ class HomePageFragment : Fragment() {
         }
 
         counter.start()
+    }
+
+    fun toMyOrderAciton() {
+        Navigation.findNavController(design.root).navigate(R.id.toMyOrder)
     }
 
 

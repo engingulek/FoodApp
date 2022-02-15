@@ -5,7 +5,7 @@
     <data>
         <variable name="fragmemntHomePage" type="com.example.foodapp.fragment.HomePageFragment" />
         <variable name="foodAdapter" type="com.example.foodapp.adapter.FoodAdapter" />
-        <variable name="cartListFoodAdapter" type="com.example.foodapp.adapter.FoodCartAdapter" />
+        <variable name="cartListFoodAdapter" type="com.example.foodapp.adapter.FoodHomePageCartAdapter" />
         <variable name="cartListState" type="Boolean" />
         <import type="android.view.View"/>
         <variable name="userName" type="String" />
@@ -147,13 +147,14 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/bttnToCart" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/materialButton"
+                    android:id="@+id/bttnToCart"
                     android:layout_width="387dp"
                     android:layout_height="48dp"
                     android:layout_marginEnd="5dp"
+                    android:onClick="@{()->fragmemntHomePage.toMyOrderAciton()}"
                     android:text="ToCart"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.databinding.HomepageCartListDesignBinding
 import com.example.foodapp.entity.CartFood
-import com.example.foodapp.entity.Food
 import com.example.foodapp.viewmodel.HomePageViewModel
 
-class FoodCartAdapter(var mContext: Context, var foodCartList: List<CartFood>, var viewModel: HomePageViewModel)
-    : RecyclerView.Adapter<FoodCartAdapter.CardDesignConservative>(){
+class FoodHomePageCartAdapter(var mContext: Context, var foodCartList: List<CartFood>, var viewModel: HomePageViewModel)
+    : RecyclerView.Adapter<FoodHomePageCartAdapter.CardDesignConservative>(){
 
         inner class CardDesignConservative(homepageCartListDesignBinding: HomepageCartListDesignBinding)
             :RecyclerView.ViewHolder(homepageCartListDesignBinding.root) {

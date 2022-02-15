@@ -28,6 +28,9 @@
         <action
             android:id="@+id/toDetails"
             app:destination="@id/foodDetailPageFragment" />
+        <action
+            android:id="@+id/toMyOrder"
+            app:destination="@id/myOrderPageFragment2" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailPageFragment"
@@ -38,4 +41,10 @@
             android:name="food"
             app:argType="com.example.foodapp.entity.Food" />
     </fragment>
+    <fragment
+        android:id="@+id/myOrderPageFragment2"
+        android:name="com.example.foodapp.fragment.MyOrderPageFragment"
+        android:label="MyOrderPageFragment"
+        tools:layout="@layout/fragment_my_order_page"
+        />
 </navigation>
