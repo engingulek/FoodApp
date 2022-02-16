@@ -19,7 +19,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-
 class HomePageFragment : Fragment() {
     private lateinit var design : FragmentHomePageBinding
     private lateinit var allFoodAdapter: FoodAdapter
@@ -34,6 +33,8 @@ class HomePageFragment : Fragment() {
 
         auth = Firebase.auth
         design.userName = auth.currentUser?.displayName
+        var a = false
+
 
        // stepTimer()
 
@@ -49,6 +50,9 @@ class HomePageFragment : Fragment() {
         })
 
 
+
+
+
         // All Food Adappter
         viewModel.foodList.observe(viewLifecycleOwner,{
             allFoodAdapter = FoodAdapter(requireContext(),it,viewModel)
@@ -57,6 +61,7 @@ class HomePageFragment : Fragment() {
 
 
         viewModel.cartFromList.observe(viewLifecycleOwner,{
+
             cartListAdapter =  FoodHomePageCartAdapter(requireContext(),it,viewModel)
             design.cartListFoodAdapter = cartListAdapter
             if (it.size > 0) {
@@ -128,6 +133,13 @@ class HomePageFragment : Fragment() {
 
     fun toMyOrderAciton() {
         Navigation.findNavController(design.root).navigate(R.id.toMyOrder)
+    }
+
+
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadCartFoodList()
     }
 
 

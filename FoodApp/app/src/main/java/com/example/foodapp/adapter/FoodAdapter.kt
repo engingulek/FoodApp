@@ -3,13 +3,17 @@ package com.example.foodapp.adapter
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.R
 import com.example.foodapp.entity.Food
 import com.example.foodapp.databinding.FoodCardDesignBinding
+import com.example.foodapp.databinding.FragmentHomePageBinding
 import com.example.foodapp.fragment.HomePageFragmentDirections
 import com.example.foodapp.viewmodel.HomePageViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -39,10 +43,31 @@ class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: 
         val food = foodList.get(position)
         val cardDesign = holder.foodCardDesignBinding
         cardDesign.foodObject = food
+        cardDesign.piece = "1"
         getFoodImage(food.food_image_name,cardDesign.foodImageView)
         cardDesign.foodCard.setOnClickListener {
             val pass = HomePageFragmentDirections.toDetails(food)
             Navigation.findNavController(it).navigate(pass)
+        }
+
+        cardDesign.bttnPricePlus.setOnClickListener {
+         val a =  cardDesign.textViewPrice.text.toString().toInt() + 1
+            cardDesign.textViewPrice.text = a.toString()
+
+
+
+
+
+
+        }
+
+        cardDesign.bttnDecrase.setOnClickListener {
+            if(cardDesign.textViewPrice.text.toString() != "1") {
+                val a =  cardDesign.textViewPrice.text.toString().toInt() - 1
+                cardDesign.textViewPrice.text = a.toString()
+            }
+
+
         }
         auth = Firebase.auth
         val email = auth.currentUser?.email
@@ -52,8 +77,9 @@ class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: 
         cardDesign.bttnAddCart.setOnClickListener {
 
             val piece = cardDesign.textViewPrice.text.toString().toInt()
-           // viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,"denemeUserName")
-            //Log.e("Kullanıcı Ismi","${userName}")
+            viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,"denemeUserName")
+            viewModel.loadCartFoodList()
+
         }
 
     }

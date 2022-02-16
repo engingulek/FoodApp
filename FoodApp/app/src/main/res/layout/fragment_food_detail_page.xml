@@ -142,6 +142,7 @@
                 android:id="@+id/bttnPricePlus"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:onClick="@{()->fragmentDetailPage.bttnPlusAction()}"
 
                 android:layout_marginTop="13dp"
                 android:text="+"
@@ -171,7 +172,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bttnDecrase"
                 android:layout_width="48dp"
-
+                android:onClick="@{()->fragmentDetailPage.bttnDecraseAction()}"
                 android:layout_height="48dp"
                 android:layout_marginTop="13dp"
                 android:text="-"
@@ -190,6 +191,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="39dp"
                 android:gravity="center"
+                android:onClick="@{()->fragmentDetailPage.bttnAddCart(foodObject)}"
                 android:text="Add Cart"
                 android:textSize="10sp"
                 app:cornerRadius="10sp"

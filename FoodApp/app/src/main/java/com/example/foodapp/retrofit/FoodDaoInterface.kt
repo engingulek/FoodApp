@@ -28,6 +28,12 @@ interface FoodDaoInterface {
                           @Field("kullanici_adi") userName:String ) : Call<CRUDResult>
 
 
+    @POST("yemekler/sepettenYemekSil.php")
+    @FormUrlEncoded
+    fun deleteFoodToCart(@Field("sepet_yemek_id") cart_food_id:Int, @Field("kullanici_adi") userName:String ) : Call<CRUDResult>
+
+
+
 
 
 

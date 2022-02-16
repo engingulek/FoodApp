@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.foodapp.R
 import com.example.foodapp.databinding.FoodCardDesignBinding
 import com.example.foodapp.databinding.FragmentFoodDetailPageBinding
+import com.example.foodapp.entity.Food
 import com.example.foodapp.viewmodel.FoodDetailPageViewModel
 import com.squareup.picasso.Picasso
 
@@ -47,6 +48,7 @@ getFoodImage(getFood.food_image_name)
 
 
 
+
         return design.root
     }
 
@@ -62,6 +64,31 @@ getFoodImage(getFood.food_image_name)
         val url = "http://kasimadalan.pe.hu/yemekler/resimler/$imageName"
         Picasso.get().load(url).into(design.imageViewFood)
     }
+
+    fun bttnPlusAction() {
+        val a =  design.textViewPrice.text.toString().toInt() + 1
+        design.textViewPrice.text = a.toString()
+
+    }
+
+
+    fun bttnDecraseAction() {
+        if(design.textViewPrice.text.toString() != "1") {
+            val a =  design.textViewPrice.text.toString().toInt() - 1
+            design.textViewPrice.text = a.toString()
+
+        }
+
+    }
+
+    fun bttnAddCart(food:Food) {
+        val piece = design.textViewPrice.text.toString().toInt()
+        viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,"denemeUserName")
+        //Log.e("Kullanıcı Ismi","${userName}")
+    }
+
+
+
 
 
 
