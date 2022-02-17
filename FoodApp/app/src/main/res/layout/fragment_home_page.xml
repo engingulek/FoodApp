@@ -35,31 +35,30 @@
             android:id="@+id/bttnSortByMaxToMin"
             android:layout_width="130dp"
             android:layout_height="39dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="1dp"
             android:onClick="@{()->fragmemntHomePage.applySort(true)}"
             android:text="Max to Min"
             android:textAllCaps="false"
             app:cornerRadius="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/bttnToCart"
+            app:layout_constraintEnd_toStartOf="@+id/bttnSortByMinToMax"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stepperCardView"
+            app:layout_constraintTop_toBottomOf="@+id/bttnToCart"
             tools:ignore="TouchTargetSizeCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bttnSortByMinToMax"
             android:layout_width="124dp"
             android:layout_height="40dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="1dp"
             android:onClick="@{()->fragmemntHomePage.applySort(false)}"
             android:text="Min to Max"
             android:textAllCaps="false"
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/bttnToCart"
-            app:layout_constraintTop_toBottomOf="@+id/stepperCardView"
+            app:layout_constraintStart_toEndOf="@+id/bttnSortByMaxToMin"
+            app:layout_constraintTop_toBottomOf="@+id/bttnToCart"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -119,6 +118,19 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bttnToCart"
+            android:layout_width="387dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="5dp"
+            android:onClick="@{()->fragmemntHomePage.toMyOrderAciton()}"
+            android:text="ToCart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.842"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stepperCardView" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/stepperCardView"
             android:layout_width="0dp"
@@ -162,11 +174,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>  -->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+           <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constOrderNull"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{cartListState == false ? View.VISIBLE : View.GONE }">
+                 android:visibility="gone">
+               <!-->android:visibility="@{cartListState == false ? View.VISIBLE : View.GONE }">-->
 
                 <TextView
                     android:id="@+id/textView2"
@@ -189,13 +202,13 @@
                 android:id="@+id/stepContraitLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:visibility="@{cartListState == true ? View.VISIBLE : View.GONE }">
 
                 <ImageView
                     android:id="@+id/imageViewThirdStep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textViewLineSecond"
@@ -206,7 +219,7 @@
                     android:id="@+id/imageViewOneStep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toStartOf="@+id/textViewLineOne"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_chainStyle="spread"
@@ -218,7 +231,7 @@
                     android:id="@+id/imageViewTwoStep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toStartOf="@+id/textViewLineSecond"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textViewLineOne"
@@ -229,7 +242,7 @@
                     android:id="@+id/textViewLineSecond"
                     android:layout_width="98dp"
                     android:layout_height="3dp"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="22dp"
                     android:background="#7A7A7A"
                     app:layout_constraintEnd_toStartOf="@+id/imageViewThirdStep"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -240,73 +253,65 @@
                     android:id="@+id/textViewLineOne"
                     android:layout_width="98dp"
                     android:layout_height="3dp"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="22dp"
                     android:background="#7A7A7A"
                     app:layout_constraintEnd_toStartOf="@+id/imageViewTwoStep"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/imageViewOneStep"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textViewOneStep"
-                    android:layout_width="74dp"
-                    android:layout_height="15dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="12dp"
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationViewMake"
+                    android:layout_width="44dp"
+                    android:layout_height="34dp"
+
+
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Hazırlanıyor"
-                    android:textAlignment="center"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewOneStep" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewOneStep"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/make_food" />
 
-                <TextView
-                    android:id="@+id/textViewTwoStep"
-                    android:layout_width="74dp"
-                    android:layout_height="15dp"
-                    android:layout_marginStart="88dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="91dp"
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationViewDelivery"
+                    android:layout_width="44dp"
+                    android:layout_height="34dp"
+
+
+                    android:layout_marginStart="114dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="114dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Yolda"
-                    android:textAlignment="center"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textViewThirdStep"
-                    app:layout_constraintStart_toEndOf="@+id/textViewOneStep"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewTwoStep" />
+                    app:layout_constraintEnd_toStartOf="@+id/animationViewDoor"
+                    app:layout_constraintStart_toEndOf="@+id/animationViewMake"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewTwoStep"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/delivery_food" />
 
-                <TextView
-                    android:id="@+id/textViewThirdStep"
-                    android:layout_width="74dp"
-                    android:layout_height="15dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="4dp"
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationViewDoor"
+                    android:layout_width="44dp"
+                    android:layout_height="34dp"
+
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Teslim Edildi"
-                    android:textAlignment="center"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewThirdStep" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewThirdStep"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/waiting" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bttnToCart"
-            android:layout_width="136dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="11dp"
-            android:onClick="@{()->fragmemntHomePage.toMyOrderAciton()}"
-            android:text="ToCart"
-            app:layout_constraintEnd_toStartOf="@+id/bttnSortByMinToMax"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/bttnSortByMaxToMin"
-            app:layout_constraintTop_toBottomOf="@+id/stepperCardView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

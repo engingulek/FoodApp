@@ -22,15 +22,16 @@
         android:name="com.example.foodapp.fragment.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" >
-        <argument
-            android:name="food"
-            app:argType="com.example.foodapp.entity.Food" />
         <action
             android:id="@+id/toDetails"
             app:destination="@id/foodDetailPageFragment" />
         <action
             android:id="@+id/toMyOrder"
             app:destination="@id/myOrderPageFragment2" />
+        <argument
+            android:name="pay"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailPageFragment"
@@ -46,5 +47,9 @@
         android:name="com.example.foodapp.fragment.MyOrderPageFragment"
         android:label="MyOrderPageFragment"
         tools:layout="@layout/fragment_my_order_page"
-        />
+        >
+        <action
+            android:id="@+id/fromMyOrdertoHomePage"
+            app:destination="@id/homePageFragment" />
+    </fragment>
 </navigation>

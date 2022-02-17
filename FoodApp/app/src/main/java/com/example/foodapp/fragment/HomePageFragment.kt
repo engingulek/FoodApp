@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.foodapp.R
 import com.example.foodapp.adapter.FoodAdapter
 import com.example.foodapp.adapter.FoodHomePageCartAdapter
@@ -36,9 +37,11 @@ class HomePageFragment : Fragment() {
         design.userName = auth.currentUser?.displayName
         var a = false
 
-        design.cartListState = true
+        design.animationViewMake.pauseAnimation()
+        design.animationViewDelivery.pauseAnimation()
+        design.animationViewDoor.pauseAnimation()
 
-        stepTimer()
+
 
         design.searchViewFood.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -50,6 +53,17 @@ class HomePageFragment : Fragment() {
                 return true
             }
         })
+
+        val bundle : HomePageFragmentArgs by navArgs()
+
+        design.cartListState = bundle.pay
+        if (design.cartListState == true) {
+            stepTimer()
+
+
+        }
+
+
 
 
 
@@ -68,7 +82,7 @@ class HomePageFragment : Fragment() {
             design.cartListFoodAdapter = cartListAdapter
             Log.e("Yeni Gelen","${it.size}")
             if (it.size > 0) {
-                design.cartListState = true
+               stepTimer()
             }
 
             else {
@@ -103,21 +117,26 @@ class HomePageFragment : Fragment() {
 
     fun stepTimer() {
         design.imageViewOneStep.setColorFilter(getResources().getColor(R.color.main_green));
-        design.textViewOneStep.setTextColor(Color.rgb(69, 140, 124))
+       // design.textViewOneStep.setTextColor(Color.rgb(69, 140, 124))
+        design.animationViewMake.playAnimation()
         design.stepContraitLayout.isGone = false
-        design.constOrderNull.isGone = true
+
 
         val counter = object  : CountDownTimer(15000,1000) {
             override fun onTick(i: Long) {
                 if(i.toInt()/1000  == 10 ) {
                     design.imageViewTwoStep.setColorFilter(getResources().getColor(R.color.main_green));
-                    design.textViewTwoStep.setTextColor(Color.rgb(69, 140, 124))
+                  //  design.textViewTwoStep.setTextColor(Color.rgb(69, 140, 124))
+                    design.animationViewDelivery.playAnimation()
+                    design.animationViewMake.pauseAnimation()
                     design.textViewLineOne.setBackgroundColor(Color.rgb(69, 140, 124))
                 }
 
                 if (i.toInt()/1000  == 5) {
                     design.imageViewThirdStep.setColorFilter(getResources().getColor(R.color.main_green));
-                    design.textViewThirdStep.setTextColor(Color.rgb(69, 140, 124))
+                    design.animationViewDoor.playAnimation()
+                   // design.textViewThirdStep.setTextColor(Color.rgb(69, 140, 124))
+                    design.animationViewDelivery.pauseAnimation()
                     design.textViewLineSecond.setBackgroundColor(Color.rgb(69, 140, 124))
                 }
             }
@@ -127,6 +146,7 @@ class HomePageFragment : Fragment() {
                 // constrain layout gizle şuan da sipariş yok yaz
                 design.stepContraitLayout.isGone = true
                 design.constOrderNull.isGone = false
+
             }
 
         }

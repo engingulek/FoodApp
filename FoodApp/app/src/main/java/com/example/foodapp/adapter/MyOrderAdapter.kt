@@ -55,14 +55,15 @@ class MyOrderAdapter(var mContext: Context, var foodCartList: List<CartFood>,
 
 
 
-           /* if (foodCartList.size == 0) {
-                viewModel.loadCartFoodList()
-                foodCartList.toMutableList().removeAt(position)
- notifyItemRemoved(position)
+
+
+            if (foodCartList.size == 0) {
+
+
 
 
             }
-            viewModel.loadCartFoodList()*/
+
 
 
 

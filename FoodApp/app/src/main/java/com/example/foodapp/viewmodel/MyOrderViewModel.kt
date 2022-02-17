@@ -14,6 +14,7 @@ class MyOrderViewModel:ViewModel() {
     var total:Int
 
 
+
     init {
 
         loadCartFoodList()
@@ -27,15 +28,21 @@ class MyOrderViewModel:ViewModel() {
     fun loadCartFoodList() {
         foodRepo.getAllFoodFromCart()
 
+
     }
 
 
     fun amount() {
-        var amount = 0
+var amount = 0
        for (a in cartFromList.value!!) {
            amount += a.food_price * a.cart_food_piece
 
-           total = amount
+
+               total = amount
+
+
+
+
 
        }
     }
@@ -45,6 +52,7 @@ class MyOrderViewModel:ViewModel() {
     fun delete(cart_food_id:Int,userName:String) {
         foodRepo.deleteFood(cart_food_id,userName)
         loadCartFoodList()
+
     }
 
 
