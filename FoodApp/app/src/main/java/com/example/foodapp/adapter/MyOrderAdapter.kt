@@ -1,9 +1,11 @@
 package com.example.foodapp.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.databinding.MyOrderFoodCartDesignBinding
 import com.example.foodapp.entity.CartFood
@@ -44,14 +46,26 @@ class MyOrderAdapter(var mContext: Context, var foodCartList: List<CartFood>,
         val userName = parts!![0]
         cardDesign.bttnRemove.setOnClickListener {
             viewModel.delete(food.cart_food_id,"denemeUserName")
+           /* foodCartList.toMutableList().removeAt(position)
+            notifyItemRemoved(position)*/
             viewModel.loadCartFoodList()
-            if (foodCartList.size == 1) {
+
+
+
+
+
+
+           /* if (foodCartList.size == 0) {
                 viewModel.loadCartFoodList()
-               foodCartList.toMutableList().removeAt(position)
+                foodCartList.toMutableList().removeAt(position)
+ notifyItemRemoved(position)
 
 
             }
-            viewModel.loadCartFoodList()
+            viewModel.loadCartFoodList()*/
+
+
+
 
         }
 

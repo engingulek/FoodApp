@@ -34,6 +34,7 @@ class MyOrderViewModel:ViewModel() {
         var amount = 0
        for (a in cartFromList.value!!) {
            amount += a.food_price * a.cart_food_piece
+
            total = amount
 
        }

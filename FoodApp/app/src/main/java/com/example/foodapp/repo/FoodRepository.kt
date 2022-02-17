@@ -178,15 +178,19 @@ class FoodRepository {
     }
 
     fun getAllFoodFromCart() {
-        foodDao.allFoodFromCart().enqueue(object : Callback<CartResult>{
+        auth = Firebase.auth
+        val email = auth.currentUser?.email
+        val parts = email?.split("@")
+        val userName = parts!![0]
+        foodDao.allFoodFromCart("denemeUserName").enqueue(object : Callback<CartResult>{
             override fun onResponse(call: Call<CartResult>, response: Response<CartResult>) {
-                var liste = response.body().cartFoods
-                auth = Firebase.auth
-                val email = auth.currentUser?.email
-                val parts = email?.split("@")
-                val userName = parts!![0]
-                val listFiltered : List<CartFood> = liste.filter { it.userName == "denemeUserName"  }
-                cartFoodList.value = listFiltered
+
+
+
+
+                cartFoodList.value = response.body().cartFoods
+
+
 
             }
 
@@ -204,7 +208,15 @@ class FoodRepository {
     fun deleteFood(cart_food_id:Int,userName:String) {
         foodDao.deleteFoodToCart(cart_food_id,userName).enqueue(object : Callback<CRUDResult> {
             override fun onResponse(call: Call<CRUDResult>, response: Response<CRUDResult>) {
-                getAllFood()
+                if (cartFoodList.value != null && !cartFoodList.value!!.isEmpty()) {
+                    cartFoodList!!.value!!.toMutableList().removeAt(cartFoodList.value!!.size-1)
+                    cartFoodList.value = emptyList()
+
+
+                }
+
+
+                getAllFoodFromCart()
             }
 
             override fun onFailure(call: Call<CRUDResult>, t: Throwable) {

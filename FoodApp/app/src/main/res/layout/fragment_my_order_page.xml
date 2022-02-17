@@ -80,7 +80,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text='@{totalAmount+".00₺"}'
+
+                android:text='@{totalAmount == null ? "0.00₺" : totalAmount+".00₺"}'
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -109,7 +110,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="24dp"
-        android:text='@{piece+" Piece"}'
+        android:text='@{piece == null ? "0 Piece" : piece+" Piece"}'
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"

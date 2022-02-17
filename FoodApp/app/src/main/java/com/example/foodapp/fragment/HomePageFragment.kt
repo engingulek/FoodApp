@@ -3,6 +3,7 @@ package com.example.foodapp.fragment
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.*
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -35,8 +36,9 @@ class HomePageFragment : Fragment() {
         design.userName = auth.currentUser?.displayName
         var a = false
 
+        design.cartListState = true
 
-       // stepTimer()
+        stepTimer()
 
         design.searchViewFood.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -60,10 +62,11 @@ class HomePageFragment : Fragment() {
         })
 
 
-        viewModel.cartFromList.observe(viewLifecycleOwner,{
+      /*  viewModel.cartFromList.observe(viewLifecycleOwner,{
 
             cartListAdapter =  FoodHomePageCartAdapter(requireContext(),it,viewModel)
             design.cartListFoodAdapter = cartListAdapter
+            Log.e("Yeni Gelen","${it.size}")
             if (it.size > 0) {
                 design.cartListState = true
             }
@@ -72,7 +75,7 @@ class HomePageFragment : Fragment() {
                 design.cartListState = false
             }
 
-        })
+        })*/
 
 
 

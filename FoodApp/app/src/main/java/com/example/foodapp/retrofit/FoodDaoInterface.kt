@@ -16,8 +16,9 @@ interface FoodDaoInterface {
     fun allFood(): Call<FoodResult>
 
 
-    @GET("yemekler/tumSepettekiYemekleriGetir.php")
-    fun allFoodFromCart() : Call<CartResult>
+    @POST("yemekler/sepettekiYemekleriGetir.php")
+    @FormUrlEncoded
+    fun allFoodFromCart(@Field("kullanici_adi") userName:String) : Call<CartResult>
 
     @POST("yemekler/sepeteYemekEkle.php")
     @FormUrlEncoded
