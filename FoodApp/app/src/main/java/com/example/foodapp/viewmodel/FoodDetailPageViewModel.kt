@@ -3,6 +3,7 @@ package com.example.foodapp.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.foodapp.entity.CartFood
+import com.example.foodapp.entity.Food
 import com.example.foodapp.entity.FoodInfo
 import com.example.foodapp.repo.FoodRepository
 import com.google.firebase.firestore.QuerySnapshot
@@ -14,13 +15,18 @@ var foodInfoList = MutableLiveData<List<FoodInfo>>()
 
 
 
+
     init {
 
         foodInfoList = frepo.brigsFoodInfo()
+
     }
 
 
+    fun addFavoriteFood(food: Food) {
+        frepo.addMyFavorite(food)
 
+    }
 
     fun foodInfo(id:String) {
         frepo.getFoodInfo(id)

@@ -27,6 +27,7 @@ class HomePageFragment : Fragment() {
     private lateinit var viewModel: HomePageViewModel
     private lateinit var auth: FirebaseAuth
     private lateinit var cartListAdapter: FoodHomePageCartAdapter
+    var foodMake : Int = 0
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -114,12 +115,13 @@ class HomePageFragment : Fragment() {
 
 
 
-
     fun stepTimer() {
         design.imageViewOneStep.setColorFilter(getResources().getColor(R.color.main_green));
        // design.textViewOneStep.setTextColor(Color.rgb(69, 140, 124))
         design.animationViewMake.playAnimation()
         design.stepContraitLayout.isGone = false
+        design.constOrderNull.isGone = true
+
 
 
         val counter = object  : CountDownTimer(15000,1000) {
@@ -156,6 +158,10 @@ class HomePageFragment : Fragment() {
 
     fun toMyOrderAciton() {
         Navigation.findNavController(design.root).navigate(R.id.toMyOrder)
+    }
+
+    fun toAccountPage() {
+        Navigation.findNavController(design.root).navigate(R.id.toAccountPage)
     }
 
 

@@ -6,21 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.foodapp.R
-import com.example.foodapp.databinding.FoodCardDesignBinding
 import com.example.foodapp.databinding.FragmentFoodDetailPageBinding
 import com.example.foodapp.entity.Food
 import com.example.foodapp.viewmodel.FoodDetailPageViewModel
+import com.example.foodapp.viewmodel.MyFavoriteViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 
 class FoodDetailPageFragment : Fragment() {
     private lateinit var design: FragmentFoodDetailPageBinding
     private lateinit var viewModel: FoodDetailPageViewModel
+    private lateinit var myFavViewModel:MyFavoriteViewModel
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -57,6 +59,11 @@ getFoodImage(getFood.food_image_name)
 
         val tempViewModel:FoodDetailPageViewModel by viewModels()
         viewModel = tempViewModel
+
+        val favTempViewModel : MyFavoriteViewModel by viewModels()
+        myFavViewModel = favTempViewModel
+
+
     }
 
 
@@ -88,6 +95,19 @@ getFoodImage(getFood.food_image_name)
     }
 
 
+    fun addFavorite(food: Food) {
+
+        viewModel.addFavoriteFood(food)
+
+
+    }
+
+fun message(textMessage:String) {
+    Snackbar.make(design.root, textMessage, Snackbar.LENGTH_LONG)
+        .setAction("Tmm"){
+        }.show()
+
+}
 
 
 

@@ -32,6 +32,9 @@
             android:name="pay"
             app:argType="boolean"
             android:defaultValue="false" />
+        <action
+            android:id="@+id/toAccountPage"
+            app:destination="@id/accountPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailPageFragment"
@@ -52,4 +55,23 @@
             android:id="@+id/fromMyOrdertoHomePage"
             app:destination="@id/homePageFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/accountPageFragment"
+        android:name="com.example.foodapp.fragment.AccountPageFragment"
+        android:label="AccountPageFragment"
+        tools:layout="@layout/fragment_account_page"
+        >
+        <action
+            android:id="@+id/toMemberShip"
+            app:destination="@id/membershipFragment" />
+        <action
+            android:id="@+id/toMyFavorites"
+            app:destination="@id/myFavoritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myFavoritesFragment"
+        android:name="com.example.foodapp.fragment.MyFavoritesFragment"
+        android:label="MyFavoritesFragment"
+        tools:layout="@layout/fragment_my_favorites"
+        />
 </navigation>

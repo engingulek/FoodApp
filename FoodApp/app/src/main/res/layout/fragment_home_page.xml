@@ -32,7 +32,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bttnSortByMaxToMin"
+            android:id="@+id/bttnSingOut"
             android:layout_width="130dp"
             android:layout_height="39dp"
             android:layout_marginTop="1dp"
@@ -57,7 +57,7 @@
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/bttnSortByMaxToMin"
+            app:layout_constraintStart_toEndOf="@+id/bttnSingOut"
             app:layout_constraintTop_toBottomOf="@+id/bttnToCart"
             tools:ignore="TouchTargetSizeCheck" />
 
@@ -94,6 +94,7 @@
         <ImageView
             android:id="@+id/imageViewUserImage"
             android:layout_width="51dp"
+            android:onClick="@{()->fragmemntHomePage.toAccountPage()}"
             android:layout_height="46dp"
             android:layout_marginStart="85dp"
             android:layout_marginTop="30dp"
@@ -178,7 +179,7 @@
                 android:id="@+id/constOrderNull"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                 android:visibility="gone">
+                 >
                <!-->android:visibility="@{cartListState == false ? View.VISIBLE : View.GONE }">-->
 
                 <TextView

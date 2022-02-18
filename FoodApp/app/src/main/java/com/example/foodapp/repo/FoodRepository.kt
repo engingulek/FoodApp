@@ -27,7 +27,11 @@ class FoodRepository {
 
     var foodInfoList : MutableLiveData<List<FoodInfo>>
     var refFoodInfo:DatabaseReference
+    var refFavFood:DatabaseReference
     private lateinit var auth: FirebaseAuth
+
+    var favFoodList : MutableLiveData<List<FavFood>>
+
 
 
 
@@ -42,6 +46,9 @@ class FoodRepository {
         val db = FirebaseDatabase.getInstance()
         refFoodInfo = db.getReference("foodInfo")
         foodInfoList = MutableLiveData()
+        refFavFood = db.getReference("favFood")
+        favFoodList = MutableLiveData()
+
 
 
 
@@ -57,6 +64,10 @@ class FoodRepository {
 
     fun bringsFoodListCart() : MutableLiveData<List<CartFood>> {
         return  cartFoodList
+    }
+
+    fun bringsFavFood() : MutableLiveData<List<FavFood>> {
+        return favFoodList
     }
 
 
@@ -185,21 +196,10 @@ class FoodRepository {
         foodDao.allFoodFromCart("denemeUserName").enqueue(object : Callback<CartResult>{
             override fun onResponse(call: Call<CartResult>, response: Response<CartResult>) {
 
-
-
-
                 cartFoodList.value = response.body().cartFoods
-
-
-
             }
-
-
-
             override fun onFailure(call: Call<CartResult>, t: Throwable) {
-
             }
-
 
         })
     }
@@ -211,11 +211,7 @@ class FoodRepository {
                 if (cartFoodList.value != null && !cartFoodList.value!!.isEmpty()) {
                     cartFoodList!!.value!!.toMutableList().removeAt(cartFoodList.value!!.size-1)
                     cartFoodList.value = emptyList()
-
-
                 }
-
-
                 getAllFoodFromCart()
             }
 
@@ -224,16 +220,46 @@ class FoodRepository {
             }
 
         })
+    }
 
 
 
 
+    fun getAllFavorites() {
+        refFavFood.addValueEventListener(object  : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = ArrayList<FavFood>()
+                for (data in snapshot.children) {
+                    val food = data.getValue(FavFood::class.java)
+                    if (food != null) {
+                        food.key = data.key
+                        list.add(food)
+                    }
+                }
+
+
+                favFoodList.value = list
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+
+    }
+
+
+    fun addMyFavorite(food:Food) {
+        getAllFavorites()
+        refFavFood.child(food.food_id.toString()).setValue(food)
+    }
 
 
 
-
-
-
+    fun deleteFavFood(food_id:String) {
+        refFavFood.child(food_id).removeValue()
     }
 
 
@@ -241,3 +267,5 @@ class FoodRepository {
 
 
 }
+
+

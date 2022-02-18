@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.R
 import com.example.foodapp.entity.Food
 import com.example.foodapp.databinding.FoodCardDesignBinding
-import com.example.foodapp.databinding.FragmentHomePageBinding
+
 import com.example.foodapp.fragment.HomePageFragmentDirections
 import com.example.foodapp.viewmodel.HomePageViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +25,7 @@ import com.squareup.picasso.Picasso
 class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: HomePageViewModel)
     : RecyclerView.Adapter<FoodAdapter.CardDesignConservative>() {
     private lateinit var auth: FirebaseAuth
+
     inner class CardDesignConservative(foodCardDesignBinding : FoodCardDesignBinding)
         : RecyclerView.ViewHolder(foodCardDesignBinding.root) {
         var foodCardDesignBinding : FoodCardDesignBinding

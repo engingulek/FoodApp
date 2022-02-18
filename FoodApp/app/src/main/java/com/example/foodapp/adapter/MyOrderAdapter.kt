@@ -39,7 +39,7 @@ class MyOrderAdapter(var mContext: Context, var foodCartList: List<CartFood>,
         val food = foodCartList.get(position)
         val cardDesign = holder.myOrderFoodCartDesignBinding
         cardDesign.foodCartObject = food
-        getFoodImage(food.food_image_name,cardDesign.imageView2)
+        getFoodImage(food.food_image_name,cardDesign.orderImage)
         auth = Firebase.auth
         val email = auth.currentUser?.email
         val parts = email?.split("@")

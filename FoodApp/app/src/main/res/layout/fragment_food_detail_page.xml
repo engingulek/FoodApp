@@ -202,6 +202,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
 
+            <ImageView
+                android:id="@+id/imageViewAddFavorite"
+                android:onClick="@{()->fragmentDetailPage.addFavorite(foodObject)}"
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="351dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/favorite" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
