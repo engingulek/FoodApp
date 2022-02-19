@@ -86,11 +86,6 @@ class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: 
     }
 
 
-    /*
-    *
-    *
-    * */
-
     override fun getItemCount(): Int {
         return foodList.size
     }

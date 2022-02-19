@@ -5,7 +5,6 @@
     <data>
         <variable name="fragmemntHomePage" type="com.example.foodapp.fragment.HomePageFragment" />
         <variable name="foodAdapter" type="com.example.foodapp.adapter.FoodAdapter" />
-        <variable name="cartListFoodAdapter" type="com.example.foodapp.adapter.FoodHomePageCartAdapter" />
         <variable name="cartListState" type="Boolean" />
         <import type="android.view.View"/>
         <variable name="userName" type="String" />
@@ -146,43 +145,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchViewFood">
 
-            <!--   <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constCartList"
-                android:layout_width="match_parent"
-                android:visibility="@{cartListState == true ? View.VISIBLE : View.GONE }"
-                android:layout_height="match_parent">
 
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvvCartFoodList"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="5dp"
-                    android:adapter="@{cartListFoodAdapter}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/bttnToCart" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/bttnToCart"
-                    android:layout_width="387dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="5dp"
-                    android:onClick="@{()->fragmemntHomePage.toMyOrderAciton()}"
-                    android:text="ToCart"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>  -->
 
            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constOrderNull"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                  >
-               <!-->android:visibility="@{cartListState == false ? View.VISIBLE : View.GONE }">-->
+
 
                 <TextView
                     android:id="@+id/textView2"

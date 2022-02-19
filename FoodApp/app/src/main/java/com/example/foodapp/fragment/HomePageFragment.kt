@@ -3,7 +3,6 @@ package com.example.foodapp.fragment
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.*
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -13,7 +12,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.foodapp.R
 import com.example.foodapp.adapter.FoodAdapter
-import com.example.foodapp.adapter.FoodHomePageCartAdapter
 import com.example.foodapp.databinding.FragmentHomePageBinding
 import com.example.foodapp.viewmodel.HomePageViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +24,7 @@ class HomePageFragment : Fragment() {
     private lateinit var allFoodAdapter: FoodAdapter
     private lateinit var viewModel: HomePageViewModel
     private lateinit var auth: FirebaseAuth
-    private lateinit var cartListAdapter: FoodHomePageCartAdapter
+
     var foodMake : Int = 0
 
 
@@ -77,20 +75,7 @@ class HomePageFragment : Fragment() {
         })
 
 
-      /*  viewModel.cartFromList.observe(viewLifecycleOwner,{
 
-            cartListAdapter =  FoodHomePageCartAdapter(requireContext(),it,viewModel)
-            design.cartListFoodAdapter = cartListAdapter
-            Log.e("Yeni Gelen","${it.size}")
-            if (it.size > 0) {
-               stepTimer()
-            }
-
-            else {
-                design.cartListState = false
-            }
-
-        })*/
 
 
 

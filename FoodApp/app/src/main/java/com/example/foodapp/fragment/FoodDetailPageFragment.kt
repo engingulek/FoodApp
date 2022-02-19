@@ -98,7 +98,7 @@ getFoodImage(getFood.food_image_name)
         val userName = parts!![0]
         val piece = design.textViewPrice.text.toString().toInt()
         viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,userName)
-        //Log.e("Kullanıcı Ismi","${userName}")
+
     }
 
 
