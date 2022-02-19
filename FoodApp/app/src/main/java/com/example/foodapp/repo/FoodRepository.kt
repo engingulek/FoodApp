@@ -2,10 +2,15 @@ package com.example.foodapp.repo
 
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.example.foodapp.databinding.FragmentFoodDetailPageBinding
 import com.example.foodapp.entity.*
 import com.example.foodapp.retrofit.ApiUtils
 import com.example.foodapp.retrofit.FoodDaoInterface
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -251,9 +256,20 @@ class FoodRepository {
     }
 
 
-    fun addMyFavorite(food:Food) {
+    fun addMyFavorite(food:Food,design: FragmentFoodDetailPageBinding) {
         getAllFavorites()
+
         refFavFood.child(food.food_id.toString()).setValue(food)
+
+
+
+
+
+
+
+
+
+
     }
 
 

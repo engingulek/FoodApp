@@ -24,9 +24,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="261dp"
-        android:text="MyOrder"
+        android:text="@string/myorder"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="@color/main_green"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Total"
+                android:text="@string/total"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -115,6 +115,7 @@
         android:layout_marginEnd="24dp"
         android:text='@{piece == null ? "0 Piece" : piece+" Piece"}'
         android:textAlignment="center"
+        android:textColor="@color/main_green"
 
         android:textSize="16sp"
         android:textStyle="bold"

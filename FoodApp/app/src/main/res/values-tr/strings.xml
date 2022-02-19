@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">FoodApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="error">Uyarı</string>
+    <string name="alert_message">Hatalı giriş. Eposta ve şifrenizi kontrol edininiz</string>
+    <string name="alert_message_null">Boş kalan yerleri doldurunuz</string>
+    <string name="close">Kapat</string>
+    <string name="alert_message_same_accomt">Böyle bir eposya adresi bulunmaktdır.</string>
+    <string name="alert_message_password_char">Şifreniz 6 karakterden fazla olmalıdır.</string>
+    <string name="alert_message_email_badly_format">Destektenmeyen e-posta adresi kontrol ediniz</string>
+    <string name="search">Yemek Ars</string>
+    <string name="decraseText">-</string>
+    <string name="plusText">+</string>
+    <string name="foodimage">foodImage</string>
+    <string name="sing_out">Çıkış Yap</string>
+    <string name="my_favorites">Favorilerim</string>
+    <string name="details">Detaylar</string>
+    <string name="raiting">Değerlerndirme</string>
+    <string name="price_one">1</string>
+    <string name="add_cart">Sepete Ekle</string>
+    <string name="favoriicon">favoriIcon</string>
+    <string name="max_to_min">Büyükten Küçüğe</string>
+    <string name="min_to_max">Küçükten Büyüğe</string>
+    <string name="question">Bugün ne yemek istersin?</string>
+    <string name="account_image">account_Image</string>
+    <string name="seach_food">Yemek Ara</string>
+    <string name="tocart">Sepete Git</string>
+    <string name="null_delivery">Aktif sipariş yok</string>
+    <string name="step3">step3</string>
+    <string name="step2">step2</string>
+    <string name="step1">step1</string>
+
+    <string name="sing_up">Kayıt Ol</string>
+    <string name="sing_in">Giriş Yap</string>
+    <string name="name_lastname">Adı Soyadı</string>
+    <string name="email">eposya</string>
+    <string name="default_password">*******</string>
+    <string name="log_in">Giriş</string>
+
+    <string name="myorder">Sepetim</string>
+    <string name="total">Toplam</string>
+    <string name="deleteicon">deleteIcon</string>
+    <string name="orderimage">orderImage</string>
+    <string name="remove">X</string>
+    <string name="hello">Merhaba</string>
+
+
+</resources>

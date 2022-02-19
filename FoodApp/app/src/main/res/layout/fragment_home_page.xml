@@ -37,7 +37,7 @@
             android:layout_height="39dp"
             android:layout_marginTop="1dp"
             android:onClick="@{()->fragmemntHomePage.applySort(true)}"
-            android:text="Max to Min"
+            android:text="@string/max_to_min"
             android:textAllCaps="false"
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toStartOf="@+id/bttnSortByMinToMax"
@@ -52,7 +52,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:onClick="@{()->fragmemntHomePage.applySort(false)}"
-            android:text="Min to Max"
+            android:text="@string/min_to_max"
             android:textAllCaps="false"
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="266dp"
-            android:text='@{"Hello "+userName}'
+            android:text='@{userName}'
             android:textAlignment="center"
             android:textColor="#458C7B"
             android:textSize="20sp"
@@ -85,7 +85,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="163dp"
-            android:text="What you want to cook today?"
+            android:text="@string/question"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,8 @@
             app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/man"
-            tools:srcCompat="@drawable/man" />
+            tools:srcCompat="@drawable/man"
+            android:contentDescription="@string/account_image" />
 
         <SearchView
             android:id="@+id/searchViewFood"
@@ -112,7 +113,8 @@
             android:layout_marginTop="13dp"
             android:background="@drawable/search_view_design"
             android:queryHint="Food Search"
-            android:text="Seach Food"
+            android:text="@string/seach_food"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +128,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="5dp"
             android:onClick="@{()->fragmemntHomePage.toMyOrderAciton()}"
-            android:text="ToCart"
+            android:text="@string/tocart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.842"
             app:layout_constraintStart_toStartOf="parent"
@@ -188,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="10dp"
-                    android:text="There is no active order"
+                    android:text="@string/null_delivery"
                     android:textColor="#458C7B"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -214,7 +216,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textViewLineSecond"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/three" />
+                    app:srcCompat="@drawable/three"
+                    android:contentDescription="@string/step3" />
 
                 <ImageView
                     android:id="@+id/imageViewOneStep"
@@ -226,7 +229,8 @@
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/one" />
+                    app:srcCompat="@drawable/one"
+                    android:contentDescription="@string/step1" />
 
                 <ImageView
                     android:id="@+id/imageViewTwoStep"
@@ -237,7 +241,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textViewLineOne"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/two" />
+                    app:srcCompat="@drawable/two"
+                    android:contentDescription="@string/step2" />
 
                 <TextView
                     android:id="@+id/textViewLineSecond"

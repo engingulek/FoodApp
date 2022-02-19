@@ -14,7 +14,6 @@ import com.example.foodapp.databinding.FragmentFoodDetailPageBinding
 import com.example.foodapp.entity.Food
 import com.example.foodapp.viewmodel.FoodDetailPageViewModel
 import com.example.foodapp.viewmodel.MyFavoriteViewModel
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 
@@ -22,6 +21,7 @@ class FoodDetailPageFragment : Fragment() {
     private lateinit var design: FragmentFoodDetailPageBinding
     private lateinit var viewModel: FoodDetailPageViewModel
     private lateinit var myFavViewModel:MyFavoriteViewModel
+
 
 
 
@@ -97,17 +97,12 @@ getFoodImage(getFood.food_image_name)
 
     fun addFavorite(food: Food) {
 
-        viewModel.addFavoriteFood(food)
+        viewModel.addFavoriteFood(food,design)
 
 
     }
 
-fun message(textMessage:String) {
-    Snackbar.make(design.root, textMessage, Snackbar.LENGTH_LONG)
-        .setAction("Tmm"){
-        }.show()
 
-}
 
 
 

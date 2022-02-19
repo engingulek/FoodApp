@@ -38,7 +38,7 @@
                     android:layout_marginStart="77dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginEnd="2dp"
-                    android:text="+"
+                    android:text="@string/plusText"
                     app:cornerRadius="120dp"
                     app:layout_constraintEnd_toStartOf="@+id/textViewPriceFav"
                     app:layout_constraintStart_toEndOf="@+id/favImage"
@@ -66,7 +66,7 @@
 
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="81dp"
-                    android:text="-"
+                    android:text="@string/decraseText"
                     app:cornerRadius="120dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textViewPriceFav"
@@ -100,7 +100,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/bttnPricePlusFav"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:contentDescription="@string/foodimage" />
 
                 <TextView
                     android:id="@+id/foodName"
@@ -138,7 +139,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/foodName"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/delete_icon" />
+                    app:srcCompat="@drawable/delete_icon"
+                    android:contentDescription="@string/deleteicon" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

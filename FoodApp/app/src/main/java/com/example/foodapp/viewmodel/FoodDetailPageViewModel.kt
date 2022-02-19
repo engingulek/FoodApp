@@ -2,11 +2,10 @@ package com.example.foodapp.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.foodapp.entity.CartFood
+import com.example.foodapp.databinding.FragmentFoodDetailPageBinding
 import com.example.foodapp.entity.Food
 import com.example.foodapp.entity.FoodInfo
 import com.example.foodapp.repo.FoodRepository
-import com.google.firebase.firestore.QuerySnapshot
 
 class FoodDetailPageViewModel : ViewModel() {
 var foodInfoList = MutableLiveData<List<FoodInfo>>()
@@ -23,8 +22,8 @@ var foodInfoList = MutableLiveData<List<FoodInfo>>()
     }
 
 
-    fun addFavoriteFood(food: Food) {
-        frepo.addMyFavorite(food)
+    fun addFavoriteFood(food: Food, design: FragmentFoodDetailPageBinding) {
+        frepo.addMyFavorite(food,design)
 
     }
 
@@ -35,6 +34,7 @@ var foodInfoList = MutableLiveData<List<FoodInfo>>()
 
 
     fun addFoodToCart(food_name:String, food_image_name :String, food_price:Int,  cart_food_piece:Int, userName:String) {
+
         frepo.addFoodtoCart(food_name, food_image_name, food_price,  cart_food_piece, userName)
 
     }

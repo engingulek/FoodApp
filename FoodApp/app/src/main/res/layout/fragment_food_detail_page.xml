@@ -25,11 +25,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/test"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/foodimage" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
+
 
         android:layout_marginTop="160dp"
 
@@ -69,6 +71,7 @@
                 android:layout_marginTop="30dp"
                 android:text='@{foodObject.food_price+".00₺"}'
                 android:textSize="20sp"
+                android:textColor="@color/food_card_text_color"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -98,7 +101,7 @@
                 android:layout_marginStart="43dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="269dp"
-                android:text="Details"
+                android:text="@string/details"
                 android:textColor="@color/main_green"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -115,7 +118,7 @@
                 android:layout_marginTop="12dp"
 
                 android:layout_marginEnd="183dp"
-                android:text="Raiting"
+                android:text="@string/raiting"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +134,7 @@
                 android:layout_marginEnd="181dp"
                 android:text='@{foodInfoObject.foodRating+"/5.0"}'
                 android:textAlignment="center"
+                android:textColor="@color/food_card_text_color"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -145,7 +149,7 @@
                 android:onClick="@{()->fragmentDetailPage.bttnPlusAction()}"
 
                 android:layout_marginTop="13dp"
-                android:text="+"
+                android:text="@string/plusText"
                 android:textSize="20sp"
                 app:cornerRadius="120dp"
                 app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
@@ -160,7 +164,7 @@
                 android:layout_height="25dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/textview_design"
-                android:text="1"
+                android:text="@string/price_one"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -175,7 +179,7 @@
                 android:onClick="@{()->fragmentDetailPage.bttnDecraseAction()}"
                 android:layout_height="48dp"
                 android:layout_marginTop="13dp"
-                android:text="-"
+                android:text="@string/decraseText"
                 android:textSize="20sp"
                 app:cornerRadius="120dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -192,7 +196,7 @@
                 android:layout_marginEnd="39dp"
                 android:gravity="center"
                 android:onClick="@{()->fragmentDetailPage.bttnAddCart(foodObject)}"
-                android:text="Add Cart"
+                android:text="@string/add_cart"
                 android:textSize="10sp"
                 app:cornerRadius="10sp"
                 app:icon="@drawable/add_shopping_cart"
@@ -200,7 +204,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewPrice"
+                tools:ignore="SmallSp" />
 
             <ImageView
                 android:id="@+id/imageViewAddFavorite"
@@ -213,7 +218,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/favorite" />
+                app:srcCompat="@drawable/favorite"
+                android:contentDescription="@string/favoriicon" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

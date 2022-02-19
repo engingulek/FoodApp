@@ -35,7 +35,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/orderimage" />
 
             <TextView
                 android:id="@+id/foodName"
@@ -81,7 +82,7 @@
                 android:layout_height="37dp"
                 android:layout_marginTop="43dp"
                 android:padding="3sp"
-                android:text="X"
+                android:text="@string/remove"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

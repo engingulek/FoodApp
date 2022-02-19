@@ -51,7 +51,7 @@
             android:layout_marginBottom="62dp"
             android:onClick="@{()->fragmentAccountPage.singOutAcciton()}"
 
-            android:text="Sing Out"
+            android:text="@string/sing_out"
             android:textAllCaps="false"
 
             app:backgroundTint="#91C3B7"
@@ -70,7 +70,7 @@
             android:layout_marginTop="91dp"
             android:onClick="@{()->fragmentAccountPage.toMyFavorites()}"
 
-            android:text="My Favorites"
+            android:text="@string/my_favorites"
             android:textAllCaps="false"
             app:backgroundTint="@color/main_green"
             app:cornerRadius="20dp"

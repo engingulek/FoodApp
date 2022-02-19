@@ -42,7 +42,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                    tools:srcCompat="@tools:sample/backgrounds/scenic"
+                    android:contentDescription="@string/foodimage" />
 
                 <TextView
                     android:id="@+id/tvFoodName"
@@ -69,6 +70,7 @@
                     android:text='@{foodObject.food_price+".00₺"}'
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    android:textColor="@color/food_card_text_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +83,7 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="20dp"
-                    android:text="+"
+                    android:text="@string/plusText"
                     app:cornerRadius="120dp"
                     app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -110,7 +112,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="4dp"
 
-                    android:text="-"
+                    android:text="@string/decraseText"
                     app:cornerRadius="120dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
