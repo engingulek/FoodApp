@@ -14,6 +14,9 @@ import com.example.foodapp.databinding.FragmentFoodDetailPageBinding
 import com.example.foodapp.entity.Food
 import com.example.foodapp.viewmodel.FoodDetailPageViewModel
 import com.example.foodapp.viewmodel.MyFavoriteViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 
@@ -22,7 +25,7 @@ class FoodDetailPageFragment : Fragment() {
     private lateinit var viewModel: FoodDetailPageViewModel
     private lateinit var myFavViewModel:MyFavoriteViewModel
 
-
+    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -89,8 +92,12 @@ getFoodImage(getFood.food_image_name)
     }
 
     fun bttnAddCart(food:Food) {
+        auth = Firebase.auth
+        val email = auth.currentUser?.email
+        val parts = email?.split("@")
+        val userName = parts!![0]
         val piece = design.textViewPrice.text.toString().toInt()
-        viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,"denemeUserName")
+        viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,userName)
         //Log.e("Kullanıcı Ismi","${userName}")
     }
 

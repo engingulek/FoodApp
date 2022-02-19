@@ -12,12 +12,15 @@ import com.squareup.picasso.Picasso
 import com.example.foodapp.entity.FavFood
 import com.example.foodapp.viewmodel.MyFavoriteViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MyFavoriteAdapter (var mContext:Context,
                          var favFoodList: List<FavFood>,
                          var viewModel:MyFavoriteViewModel)
     :RecyclerView.Adapter<MyFavoriteAdapter.CardDesignConservative>() {
-
+    private lateinit var auth: FirebaseAuth
       inner class CardDesignConservative(myFavCardDesignBinding: MyFavCardDesignBinding)
           :RecyclerView.ViewHolder(myFavCardDesignBinding.root) {
               var myFavCardDesignBinding: MyFavCardDesignBinding
@@ -66,9 +69,12 @@ class MyFavoriteAdapter (var mContext:Context,
 
 
         cardDesign.bttnAddCartFav.setOnClickListener {
-
+            auth = Firebase.auth
+            val email = auth.currentUser?.email
+            val parts = email?.split("@")
+            val userName = parts!![0]
             val piece = cardDesign.textViewPriceFav.text.toString().toInt()
-            viewModel.addFoodToCart(favFood.food_name!!,favFood.food_image_name!!,favFood.food_price!!,piece,"denemeUserName")
+            viewModel.addFoodToCart(favFood.food_name!!,favFood.food_image_name!!,favFood.food_price!!,piece,userName)
 
 
         }

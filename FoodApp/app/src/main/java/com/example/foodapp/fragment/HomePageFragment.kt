@@ -36,7 +36,7 @@ class HomePageFragment : Fragment() {
 
         auth = Firebase.auth
         design.userName = auth.currentUser?.displayName
-        var a = false
+
 
         design.animationViewMake.pauseAnimation()
         design.animationViewDelivery.pauseAnimation()

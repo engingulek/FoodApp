@@ -45,7 +45,7 @@ class MyOrderAdapter(var mContext: Context, var foodCartList: List<CartFood>,
         val parts = email?.split("@")
         val userName = parts!![0]
         cardDesign.bttnRemove.setOnClickListener {
-            viewModel.delete(food.cart_food_id,"denemeUserName")
+            viewModel.delete(food.cart_food_id,userName)
            /* foodCartList.toMutableList().removeAt(position)
             notifyItemRemoved(position)*/
             viewModel.loadCartFoodList()

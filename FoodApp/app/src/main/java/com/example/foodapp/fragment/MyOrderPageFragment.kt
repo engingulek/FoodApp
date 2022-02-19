@@ -15,10 +15,13 @@ import com.example.foodapp.R
 import com.example.foodapp.adapter.MyOrderAdapter
 import com.example.foodapp.databinding.FragmentMyOrderPageBinding
 import com.example.foodapp.viewmodel.MyOrderViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class MyOrderPageFragment : Fragment() {
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var design: FragmentMyOrderPageBinding
     private lateinit var viewModel : MyOrderViewModel
     private lateinit var cartListAdapter: MyOrderAdapter
@@ -52,12 +55,16 @@ class MyOrderPageFragment : Fragment() {
 
 
     fun toHomePage() {
+        auth = Firebase.auth
+        val email = auth.currentUser?.email
+        val parts = email?.split("@")
+        val userName = parts!![0]
         val pass: NavDirections
       if(design.bttnPay.text.toString() == "Pay")  {
            pass = MyOrderPageFragmentDirections.fromMyOrdertoHomePage(true)
           viewModel.cartFromList.observe(viewLifecycleOwner,{
               for(food in it) {
-                  viewModel.delete(food.cart_food_id,"denemeUserName")
+                  viewModel.delete(food.cart_food_id,userName)
               }
           })
       }

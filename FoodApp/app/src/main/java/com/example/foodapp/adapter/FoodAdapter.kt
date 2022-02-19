@@ -78,7 +78,7 @@ class FoodAdapter(var mContext:Context,var foodList: List<Food>, var viewModel: 
         cardDesign.bttnAddCart.setOnClickListener {
 
             val piece = cardDesign.textViewPrice.text.toString().toInt()
-            viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,"denemeUserName")
+            viewModel.addFoodToCart(food.food_name,food.food_image_name,food.food_price,piece,userName)
             viewModel.loadCartFoodList()
 
         }

@@ -198,7 +198,7 @@ class FoodRepository {
         val email = auth.currentUser?.email
         val parts = email?.split("@")
         val userName = parts!![0]
-        foodDao.allFoodFromCart("denemeUserName").enqueue(object : Callback<CartResult>{
+        foodDao.allFoodFromCart(userName).enqueue(object : Callback<CartResult>{
             override fun onResponse(call: Call<CartResult>, response: Response<CartResult>) {
 
                 cartFoodList.value = response.body().cartFoods
