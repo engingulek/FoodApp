@@ -20,8 +20,8 @@
     <string name="price_one">1</string>
     <string name="add_cart">Sepete Ekle</string>
     <string name="favoriicon">favoriIcon</string>
-    <string name="max_to_min">Büyükten Küçüğe</string>
-    <string name="min_to_max">Küçükten Büyüğe</string>
+    <string name="max_to_min">Azalan</string>
+    <string name="min_to_max">Artan</string>
     <string name="question">Bugün ne yemek istersin?</string>
     <string name="account_image">account_Image</string>
     <string name="seach_food">Yemek Ara</string>
@@ -34,7 +34,7 @@
     <string name="sing_up">Kayıt Ol</string>
     <string name="sing_in">Giriş Yap</string>
     <string name="name_lastname">Adı Soyadı</string>
-    <string name="email">eposya</string>
+    <string name="email">eposta</string>
     <string name="default_password">*******</string>
     <string name="log_in">Giriş</string>
 

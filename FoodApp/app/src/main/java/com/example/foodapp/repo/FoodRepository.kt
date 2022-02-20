@@ -79,7 +79,7 @@ class FoodRepository {
 
 
 
-
+// Bütün yemekleri almak için kullanılmıştır.
     fun getAllFood(){
         foodDao.allFood().enqueue(object :Callback<FoodResult>{
             override fun onResponse(call: Call<FoodResult>, response: Response<FoodResult>) {
@@ -95,7 +95,7 @@ class FoodRepository {
 
     }
 
-
+// Yemekler arasında arama yapmak için kullanılmıştır.
     fun searchFood(query:String){
         foodDao.allFood().enqueue(object :Callback<FoodResult>{
             override fun onResponse(call: Call<FoodResult>, response: Response<FoodResult>) {
@@ -118,7 +118,7 @@ class FoodRepository {
 
 
 
-
+// Sıralama yapmak için kullanılmıştır.
     fun sortPrice(sortType:Boolean) {
 
         foodDao.allFood().enqueue(object :Callback<FoodResult>{
@@ -150,7 +150,7 @@ class FoodRepository {
 
 
 
-
+  // Yemek hakkında olan bilgileri firebaseden almak için kullanulmıştır
     fun getFoodInfo(foodId:String) {
         refFoodInfo.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -179,7 +179,7 @@ class FoodRepository {
     }
 
 
-
+   // sepete yemek ekleme işlemi için kullanılmıştır.
     fun addFoodtoCart(food_name:String, food_image_name :String, yemek_price:Int,  cart_food_piece:Int, userName:String) {
         foodDao.insertFoodToCaert(food_name, food_image_name, yemek_price,  cart_food_piece, userName).enqueue(object  : Callback<CRUDResult>{
             override fun onResponse(call: Call<CRUDResult>?, response: Response<CRUDResult>?) {
@@ -192,7 +192,7 @@ class FoodRepository {
 
         })
     }
-
+// sepetteki bize ait olan yemekleri almak için kullanılmıştır.
     fun getAllFoodFromCart() {
         auth = Firebase.auth
         val email = auth.currentUser?.email
@@ -209,10 +209,11 @@ class FoodRepository {
         })
     }
 
-
+// sepetten yemek silmek için kullanılmaktadır.
     fun deleteFood(cart_food_id:Int,userName:String) {
         foodDao.deleteFoodToCart(cart_food_id,userName).enqueue(object : Callback<CRUDResult> {
             override fun onResponse(call: Call<CRUDResult>, response: Response<CRUDResult>) {
+                // Sepette kalan son ürünü silmek için kullanılmıştır
                 if (cartFoodList.value != null && !cartFoodList.value!!.isEmpty()) {
                     cartFoodList!!.value!!.toMutableList().removeAt(cartFoodList.value!!.size-1)
                     cartFoodList.value = emptyList()
@@ -229,7 +230,7 @@ class FoodRepository {
 
 
 
-
+// favorideki yemekleri almak için kullanılmaktadır.
     fun getAllFavorites() {
         refFavFood.addValueEventListener(object  : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -256,24 +257,15 @@ class FoodRepository {
     }
 
 
+    // favoriye yemek eklemek için kullanılmaktadır.
     fun addMyFavorite(food:Food,design: FragmentFoodDetailPageBinding) {
         getAllFavorites()
 
         refFavFood.child(food.food_id.toString()).setValue(food)
-
-
-
-
-
-
-
-
-
-
     }
 
 
-
+    // favoriden yemek silmek için kullanılmaktadır
     fun deleteFavFood(food_id:String) {
         refFavFood.child(food_id).removeValue()
     }
