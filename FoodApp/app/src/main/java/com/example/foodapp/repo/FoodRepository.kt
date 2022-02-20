@@ -51,7 +51,9 @@ class FoodRepository {
         val db = FirebaseDatabase.getInstance()
         refFoodInfo = db.getReference("foodInfo")
         foodInfoList = MutableLiveData()
-        refFavFood = db.getReference("favFood")
+        auth = Firebase.auth
+        val uid = auth.currentUser?.uid
+        refFavFood = db.getReference("favFood").child("${uid}")
         favFoodList = MutableLiveData()
 
 
@@ -260,6 +262,7 @@ class FoodRepository {
     // favoriye yemek eklemek için kullanılmaktadır.
     fun addMyFavorite(food:Food,design: FragmentFoodDetailPageBinding) {
         getAllFavorites()
+
 
         refFavFood.child(food.food_id.toString()).setValue(food)
     }
